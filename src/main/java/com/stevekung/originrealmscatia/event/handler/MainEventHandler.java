@@ -1,5 +1,7 @@
 package com.stevekung.originrealmscatia.event.handler;
 
+import java.util.Locale;
+
 import org.lwjgl.glfw.GLFW;
 
 import com.mojang.brigadier.StringReader;
@@ -77,7 +79,7 @@ public class MainEventHandler
         
         if (event.getType() == ChatType.SYSTEM)
         {
-            if (component.getString().contains("gg"))
+            if (component.getString().toLowerCase(Locale.ROOT).contains("gg"))
             {
                 event.setCanceled(true);
             }
