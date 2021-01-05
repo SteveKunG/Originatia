@@ -30,6 +30,7 @@ import net.minecraft.world.IWorldReader;
 public class SoundTest
 {
     public static final Map<Block, List<ISoundData>> DATA = Maps.newHashMap();
+    public static final Map<Block, List<ISoundData>> TRIPWIRE = Maps.newHashMap();
 
     static
     {
@@ -38,23 +39,54 @@ public class SoundTest
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BELL, 13),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASEDRUM, 12),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.CHIME, 8, 9),
-                NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BIT, 16),
+                NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BIT, 16, 21),
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.COW_BELL, 20),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.GUITAR, 18)
                 ));
-        DATA.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
+        TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=true,west=false]")
-                
-                
+                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=true,west=false]"),
+                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
+                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=false,west=true]")
+
                 ));
     }
 
     public static SoundType setSound(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity, Block block)
     {
         Collection<ISoundData> datas = DATA.get(state.getBlock());
+        Collection<ISoundData> tdatas = TRIPWIRE.get(world.getBlockState(pos.up()).getBlock());
 
+        if (tdatas != null)
+        {
+            for (ISoundData data : tdatas)
+            {
+                if (data instanceof TripWireBlockSoundData)
+                {
+                    TripWireBlockSoundData tData = (TripWireBlockSoundData)data;
+
+                    try
+                    {
+                        BlockStateInput input = BlockStateArgument.blockState().parse(new StringReader(tData.getState()));
+//                        BlockStateInput input1 = BlockStateArgument.blockState().parse(new StringReader("minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=false]"));
+
+                        if (world.getBlockState(pos.up()).equals(input.getState()))
+                        {
+                            return tData.getType();
+                        }
+//                        if (world.getBlockState(pos.up()).equals(input1.getState()))
+//                        {
+//                            return SoundType.LADDER;
+//                        }
+                    }
+                    catch (CommandSyntaxException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
         if (datas != null)
         {
             for (ISoundData data : datas)
@@ -73,41 +105,8 @@ public class SoundTest
                     SimpleBlockSoundData sData = (SimpleBlockSoundData)data;
                     return sData.getType();
                 }
-                else if (data instanceof TripWireBlockSoundData)
-                {
-                    TripWireBlockSoundData tData = (TripWireBlockSoundData)data;
-                    
-                    try
-                    {
-                        BlockStateInput input = BlockStateArgument.blockState().parse(new StringReader(tData.getState()));
-                        
-                        if (state.equals(input.getState()))
-                        {
-                            return tData.getType();
-                        }
-                    }
-                    catch (CommandSyntaxException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
             }
         }
-        //        if (state.getBlock() == Blocks.PETRIFIED_OAK_SLAB)
-        //        {
-        //            return SoundType.GROUND;
-        //        }
-        //        if (state.getBlock() == Blocks.TRIPWIRE)
-        //        {
-        //            //            if (state.get(TripWireBlock.ATTACHED) && state.get(TripWireBlock.NORTH) && state.get(TripWireBlock.SOUTH) && state.get(TripWireBlock.WEST))//20
-        //            //            {
-        //            //                return SoundType.STONE;
-        //            //            }
-        //            //            if (state.get(TripWireBlock.ATTACHED) || !state.get(TripWireBlock.ATTACHED) && state.get(TripWireBlock.NORTH))//20
-        //            //            {
-        //            //                return SoundType.CROP;
-        //            //            }
-        //        }
         return block.getSoundType(state);
     }
 }
