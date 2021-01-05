@@ -1,0 +1,167 @@
+buildscript {
+    repositories {
+        maven { url "https://files.minecraftforge.net/maven" }
+        maven { url "https://repo.spongepowered.org/maven" }
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "3.+", changing: true
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
+        classpath "org.spongepowered:mixingradle:0.7-SNAPSHOT"
+        classpath "com.github.jengelman.gradle.plugins:shadow:4.0.4"
+    }
+}
+
+plugins {
+    id "com.matthewprenger.cursegradle" version "1.4.0"
+}
+
+def mcVersion = project.mc_version
+def username = project.username
+def password = project.password
+
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "net.minecraftforge.gradle"
+apply plugin: "org.spongepowered.mixin"
+apply plugin: "eclipse"
+
+import net.minecraftforge.gradle.common.task.SignJar
+
+version = project.version
+group = "com.stevekung.originrealmscatia"
+archivesBaseName = "OriginRealmscatia"
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = 1.8
+println("Java: " + System.getProperty("java.version") + " JVM: " + System.getProperty("java.vm.version") + "(" + System.getProperty("java.vendor") + ") Arch: " + System.getProperty("os.arch"))
+compileJava.options.encoding = "UTF-8"
+
+minecraft {
+    mappings channel: "snapshot", version: "${mcp_mapping}"
+    accessTransformer file("src/main/resources/META-INF/accesstransformer.cfg")
+
+    runs {
+        client {
+            workingDirectory project.file("run")
+            source sourceSets.main
+            args "--mixin", "mixins.originrealmscatia.json", "--username", username, "--password", password
+            jvmArgs "-Dmixin.debug.export=true"
+        }
+    }
+}
+
+configurations {
+    embed
+    compile.extendsFrom(embed)
+}
+
+shadowJar {
+    configurations = [project.configurations.embed]
+    baseName = "OriginRealmscatia-" + mcVersion
+    classifier = ""
+    relocate "org.apache.commons.text", "com.stevekung.originrealmscatia.relocate.org.apache.commons.text"
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${forge_version}"
+    compile files("libs/SteveKunG's-Lib-${mc_version}-${stevekung_lib_version}-deobf.jar")
+    compile files("libs/Indicatia-${mc_version}-${indicatia_version}-deobf.jar")
+    embed("org.apache.commons:commons-text:1.8") {
+        exclude group: "org.apache.commons", module: "commons-lang3"
+    }
+}
+
+repositories {
+    maven {
+        name "CurseGradle"
+        url "https://plugins.gradle.org/m2/"
+    }
+    maven {
+        name "Shadow"
+        url "https://jitpack.io"
+    }
+}
+
+sourceSets {
+    main {
+        ext.refMap = "mixins.originrealmscatia.refmap.json"
+    }
+}
+
+reobf {
+    shadowJar {
+        dependsOn tasks.createMcpToSrg
+        mappings = tasks.createMcpToSrg.outputs.files.singleFile
+    }
+}
+
+jar {
+    manifest {
+        attributes("MixinConnector": "com.stevekung.skyblockcatia.core.SkyBlockcatiaMixinConnector"
+        )
+    }
+    baseName = "OriginRealmscatia-" + mcVersion
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    from(configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude "LICENSE.txt", "META-INF/*.txt", "META-INF/MANIFSET.MF", "META-INF/maven/**", "META-INF/*.RSA", "META-INF/*.SF"
+    }
+    baseName = "OriginRealmscatia-" + mcVersion
+    classifier = "sources"
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    from(configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude "LICENSE.txt", "META-INF/*.txt", "META-INF/MANIFSET.MF", "META-INF/maven/**", "META-INF/*.RSA", "META-INF/*.SF"
+    }
+    manifest {
+        attributes("MixinConnector": "com.stevekung.skyblockcatia.core.SkyBlockcatiaMixinConnector"
+        )
+    }
+    baseName = "OriginRealmscatia-" + mcVersion
+    classifier = "deobf"
+}
+
+artifacts {
+    archives sourcesJar
+    archives deobfJar
+}
+
+curseforge {
+    if (project.hasProperty("upload_api_key")) {
+        apiKey = project.upload_api_key
+        project {
+            id = "397441"
+            changelog = file("CHANGE_LOG.md")
+            changelogType = "markdown"
+            releaseType = "release"
+            addGameVersion mcVersion
+
+            mainArtifact(jar) {
+                displayName = "SkyBlockcatia-" + mcVersion + "-" + version
+                relations {
+                    requiredLibrary "stevekungs-lib"
+                    optionalLibrary "indicatia"
+                }
+            }
+            addArtifact sourcesJar
+            addArtifact deobfJar
+        }
+    }
+}
+
+task signJar(type: SignJar, dependsOn: jar) {
+    if (project.hasProperty("upload_api_key")) {
+        keyStore = project.keystore_path
+        alias = project.alias
+        storePass = project.keystore_pass
+        keyPass = project.keystore_pass
+        inputFile = jar.archivePath
+        outputFile = jar.archivePath
+    }
+}
+
+build.dependsOn signJar
+tasks.curseforge.dependsOn(build)
