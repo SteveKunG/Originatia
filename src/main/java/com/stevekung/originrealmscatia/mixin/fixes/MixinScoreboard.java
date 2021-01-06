@@ -42,15 +42,16 @@ public class MixinScoreboard
     {
         if (Utils.INSTANCE.isOriginRealms())
         {
-            if (this.that.getPlayersTeam(username) == playerTeam)
+            if (this.that.getPlayersTeam(username) != playerTeam)
+            {
+                info.cancel();
+            }
+            else
             {
                 this.teamMemberships.remove(username);
                 playerTeam.getMembershipCollection().remove(username);
             }
-            else
-            {
-                info.cancel();
-            }
+            info.cancel();
         }
     }
 }
