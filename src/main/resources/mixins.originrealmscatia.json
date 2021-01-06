@@ -8,8 +8,13 @@
     "mixins": [],
     "client": [
         "MixinBlock",
+        "MixinEntity",
         "MixinNoteBlock",
-        "fixes.MixinResourceLocation"
+        "fixes.MixinCommandSuggestionHelper",
+        "fixes.MixinFilterList",
+        "fixes.MixinResourceLocation",
+        "fixes.MixinScoreboard",
+        "fixes.MixinSocialInteractionsScreen"
     ],
     "injectors": {
         "defaultRequire": 1

@@ -13,14 +13,15 @@ public class TripWireBlockSoundData implements ISoundData
         this.state = state;
     }
 
-    public String getState()
-    {
-        return state;
-    }
-
+    @Override
     public SoundType getType()
     {
-        return type;
+        return this.type;
+    }
+
+    public String getState()
+    {
+        return this.state;
     }
 
     public static TripWireBlockSoundData create(SoundType type, String state)

@@ -43,11 +43,11 @@ public class MainEventHandler
                     StringBuilder stringbuilder = new StringBuilder(BlockStateParser.toString(state));
                     System.out.println(stringbuilder);
                     this.mc.keyboardListener.setClipboardString(stringbuilder.toString());
-                    
+
                     try
                     {
                         BlockStateInput input = BlockStateArgument.blockState().parse(new StringReader("minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"));
-                        
+
                         if (state.equals(input.getState()))
                         {
                             System.out.println(input.getState());
@@ -71,12 +71,12 @@ public class MainEventHandler
     public void onPostGuiDrawScreen(GuiScreenEvent.DrawScreenEvent.Post event)
     {
     }
-    
+
     @SubscribeEvent
     public void onClientChatReceived(ClientChatReceivedEvent event)
     {
         ITextComponent component = event.getMessage();
-        
+
         if (event.getType() == ChatType.SYSTEM)
         {
             if (component.getString().toLowerCase(Locale.ROOT).contains("gg"))

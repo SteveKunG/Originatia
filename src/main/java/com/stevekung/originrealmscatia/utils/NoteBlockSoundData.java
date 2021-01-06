@@ -5,31 +5,31 @@ import net.minecraft.state.properties.NoteBlockInstrument;
 
 public class NoteBlockSoundData implements ISoundData
 {
+    private final SoundType type;
     private final NoteBlockInstrument instrument;
     private final int[] note;
-    private final SoundType type;
-    
+
     public NoteBlockSoundData(SoundType type, NoteBlockInstrument instrument, int... note)
     {
-        super();
         this.type = type;
         this.instrument = instrument;
         this.note = note;
     }
-    
+
+    @Override
+    public SoundType getType()
+    {
+        return this.type;
+    }
+
     public NoteBlockInstrument getInstrument()
     {
-        return instrument;
+        return this.instrument;
     }
 
     public int[] getNote()
     {
-        return note;
-    }
-
-    public SoundType getType()
-    {
-        return type;
+        return this.note;
     }
 
     public static NoteBlockSoundData create(SoundType type, NoteBlockInstrument instrument, int... note)

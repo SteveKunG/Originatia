@@ -6,7 +6,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import com.stevekung.originrealmscatia.event.handler.SoundTest;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -16,16 +15,11 @@ import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.extensions.IForgeBlock;
 
 @Mixin(Block.class)
-public abstract class MixinBlock extends AbstractBlock implements IForgeBlock
+public abstract class MixinBlock implements IForgeBlock
 {
-    private MixinBlock()
-    {
-        super(null);
-    }
-
     @Override
     public SoundType getSoundType(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity)
     {
-        return SoundTest.instance.setSound(state, world, pos, entity, this.getBlock());
+        return SoundTest.instance.setBlockSound(state, world, pos, entity, this.getBlock());
     }
 }

@@ -25,7 +25,7 @@ public class MixinNoteBlock
     {
         if (Utils.INSTANCE.isOriginRealms())
         {
-            if (state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO)//12
+            if (state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
             {
                 info.setReturnValue(ActionResultType.SUCCESS);
             }

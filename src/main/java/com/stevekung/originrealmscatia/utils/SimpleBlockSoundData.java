@@ -11,9 +11,10 @@ public class SimpleBlockSoundData implements ISoundData
         this.type = type;
     }
 
+    @Override
     public SoundType getType()
     {
-        return type;
+        return this.type;
     }
 
     public static SimpleBlockSoundData create(SoundType type)
