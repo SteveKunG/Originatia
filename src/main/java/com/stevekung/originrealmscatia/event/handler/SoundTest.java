@@ -46,6 +46,8 @@ public class SoundTest
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=false]"),
                 TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=true,west=false]"),
+                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=false,west=true]"),
+                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=false]"),
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),

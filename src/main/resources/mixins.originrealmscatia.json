@@ -10,6 +10,7 @@
         "MixinBlock",
         "MixinEntity",
         "MixinNoteBlock",
+        "fixes.MixinClientAdvancementManager",
         "fixes.MixinCommandSuggestionHelper",
         "fixes.MixinFilterList",
         "fixes.MixinResourceLocation",
