@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.google.common.collect.Maps;
 import com.stevekung.originrealmscatia.utils.Utils;
 
 import net.minecraft.scoreboard.ScorePlayerTeam;
@@ -24,7 +23,7 @@ public class MixinScoreboard
 
     @Shadow
     @Final
-    private Map<String, ScorePlayerTeam> teamMemberships = Maps.newHashMap();
+    private Map<String, ScorePlayerTeam> teamMemberships;
 
     @Inject(method = "createTeam(Ljava/lang/String;)Lnet/minecraft/scoreboard/ScorePlayerTeam;", cancellable = true, at = @At(value = "INVOKE", target = "net/minecraft/scoreboard/Scoreboard.getTeam(Ljava/lang/String;)Lnet/minecraft/scoreboard/ScorePlayerTeam;", shift = Shift.AFTER))
     private void createTeam(String name, CallbackInfoReturnable<ScorePlayerTeam> info)
