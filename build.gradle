@@ -30,7 +30,7 @@ import net.minecraftforge.gradle.common.task.SignJar
 
 version = project.version
 group = "com.stevekung.originrealmscatia"
-archivesBaseName = "OriginRealmscatia"
+archivesBaseName = "OriginRealmscatiaForge"
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = 1.8
 println("Java: " + System.getProperty("java.version") + " JVM: " + System.getProperty("java.vm.version") + "(" + System.getProperty("java.vendor") + ") Arch: " + System.getProperty("os.arch"))
 compileJava.options.encoding = "UTF-8"
@@ -56,7 +56,7 @@ configurations {
 
 shadowJar {
     configurations = [project.configurations.embed]
-    baseName = "OriginRealmscatia-" + mcVersion
+    baseName = "OriginRealmscatiaForge-" + mcVersion
     classifier = ""
     relocate "org.apache.commons.text", "com.stevekung.originrealmscatia.relocate.org.apache.commons.text"
 }
@@ -96,10 +96,10 @@ reobf {
 
 jar {
     manifest {
-        attributes("MixinConnector": "com.stevekung.skyblockcatia.core.SkyBlockcatiaMixinConnector"
+        attributes("MixinConnector": "com.stevekung.originrealmscatia.core.OriginRealmscatiaMixinConnector"
         )
     }
-    baseName = "OriginRealmscatia-" + mcVersion
+    baseName = "OriginRealmscatiaForge-" + mcVersion
 }
 
 task sourcesJar(type: Jar) {
@@ -107,7 +107,7 @@ task sourcesJar(type: Jar) {
     from(configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
         exclude "LICENSE.txt", "META-INF/*.txt", "META-INF/MANIFSET.MF", "META-INF/maven/**", "META-INF/*.RSA", "META-INF/*.SF"
     }
-    baseName = "OriginRealmscatia-" + mcVersion
+    baseName = "OriginRealmscatiaForge-" + mcVersion
     classifier = "sources"
 }
 
@@ -117,10 +117,10 @@ task deobfJar(type: Jar) {
         exclude "LICENSE.txt", "META-INF/*.txt", "META-INF/MANIFSET.MF", "META-INF/maven/**", "META-INF/*.RSA", "META-INF/*.SF"
     }
     manifest {
-        attributes("MixinConnector": "com.stevekung.skyblockcatia.core.SkyBlockcatiaMixinConnector"
+        attributes("MixinConnector": "com.stevekung.originrealmscatia.core.OriginRealmscatiaMixinConnector"
         )
     }
-    baseName = "OriginRealmscatia-" + mcVersion
+    baseName = "OriginRealmscatiaForge-" + mcVersion
     classifier = "deobf"
 }
 
@@ -140,7 +140,7 @@ curseforge {
             addGameVersion mcVersion
 
             mainArtifact(jar) {
-                displayName = "SkyBlockcatia-" + mcVersion + "-" + version
+                displayName = "OriginRealmscatiaForge-" + mcVersion + "-" + version
                 relations {
                     requiredLibrary "stevekungs-lib"
                     optionalLibrary "indicatia"

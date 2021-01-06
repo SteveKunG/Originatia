@@ -10,6 +10,6 @@ public class OriginRealmscatiaMixinConnector implements IMixinConnector
     public void connect()
     {
         MixinBootstrap.init();
-        Mixins.addConfiguration("mixins.skyblockcatia.json");
+        Mixins.addConfiguration("mixins.originrealmscatia.json");
     }
 }
