@@ -20,7 +20,7 @@ import net.minecraft.world.IWorldReader;
 @Mixin(Entity.class)
 public class MixinEntity
 {
-    @Redirect(method = "playStepSound(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V", at = @At(value = "INVOKE", target = "net/minecraft/block/BlockState.getSoundType(Lnet/minecraft/world/IWorldReader;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/Entity;)Lnet/minecraft/block/SoundType;", ordinal = 0))
+    @Redirect(method = "playStepSound(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V", at = @At(value = "INVOKE", remap = false, target = "net/minecraft/block/BlockState.getSoundType(Lnet/minecraft/world/IWorldReader;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/Entity;)Lnet/minecraft/block/SoundType;", ordinal = 0))
     private SoundType playStepSound(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity)
     {
         return SoundTest.instance.setStepSound(state, world, pos, entity);

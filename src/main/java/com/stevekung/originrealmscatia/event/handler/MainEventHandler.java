@@ -4,14 +4,15 @@ import java.util.Locale;
 
 import org.lwjgl.glfw.GLFW;
 
-import com.mojang.brigadier.StringReader;
+import com.stevekung.stevekungslib.utils.GameProfileUtils;
 import com.stevekung.stevekungslib.utils.client.ClientUtils;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.command.arguments.BlockStateArgument;
-import net.minecraft.command.arguments.BlockStateInput;
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.command.arguments.BlockStateParser;
+import net.minecraft.inventory.container.Slot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.ITextComponent;
@@ -43,19 +44,20 @@ public class MainEventHandler
                     StringBuilder stringbuilder = new StringBuilder(BlockStateParser.toString(state));
                     System.out.println(stringbuilder);
                     this.mc.keyboardListener.setClipboardString(stringbuilder.toString());
+                }
+            }
 
-                    try
+            if (GameProfileUtils.isSteveKunG())
+            {
+                if (this.mc.currentScreen != null && this.mc.currentScreen instanceof ContainerScreen)
+                {
+                    ContainerScreen container = (ContainerScreen)this.mc.currentScreen;
+                    Slot slot = container.getSlotUnderMouse();
+
+                    if (slot != null && slot.getHasStack())
                     {
-                        BlockStateInput input = BlockStateArgument.blockState().parse(new StringReader("minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"));
-
-                        if (state.equals(input.getState()))
-                        {
-                            System.out.println(input.getState());
-                        }
-                    }
-                    catch (Exception e)
-                    {
-
+                        ItemStack itemStack = slot.getStack();
+                        this.mc.keyboardListener.setClipboardString("/give @s " + itemStack.getItem().getRegistryName() + itemStack.getTag());
                     }
                 }
             }

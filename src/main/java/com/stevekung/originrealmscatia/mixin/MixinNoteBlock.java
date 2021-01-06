@@ -10,6 +10,8 @@ import com.stevekung.originrealmscatia.utils.Utils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.NoteBlock;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.properties.NoteBlockInstrument;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -25,7 +27,9 @@ public class MixinNoteBlock
     {
         if (Utils.INSTANCE.isOriginRealms())
         {
-            if (state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
+            ItemStack itemStack = player.getHeldItem(hand);
+
+            if ((itemStack.isEmpty() || !itemStack.isEmpty() && itemStack.getItem() == Items.WATER_BUCKET) && state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
             {
                 info.setReturnValue(ActionResultType.SUCCESS);
             }
