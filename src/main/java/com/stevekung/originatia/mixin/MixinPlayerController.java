@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.stevekung.originatia.event.handler.HandlerClickblock;
+import com.stevekung.originatia.block.PlanterBoxHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.PlayerController;
@@ -27,12 +27,12 @@ public class MixinPlayerController
     @Inject(method = "clickBlock(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/Direction;)Z", cancellable = true, at = @At("HEAD"))
     private void clickBlock(BlockPos pos, Direction direction, CallbackInfoReturnable info)
     {
-        HandlerClickblock.handleClickBlock(pos, direction, mc, info);
+        PlanterBoxHandler.clickBlock(pos, direction, mc, info);
     }
 
     @Inject(method = "attackEntity(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/entity/Entity;)V", cancellable = true, at = @At("HEAD"))
     private void attackEntity(PlayerEntity player, Entity targetEntity, CallbackInfo info)
     {
-        HandlerClickblock.handleClickEntity(player, targetEntity, mc, info);
+        PlanterBoxHandler.clickEntity(player, targetEntity, mc, info);
     }
 }
