@@ -6,9 +6,9 @@ license="MIT License"
 
 [[mods]]
 modId="originatia"
-version="1.0.0"
+version="0.0.1"
 displayName="Originatia"
-description="Useful QOL Mod for Origin Realms server!"
+description="Useful Origin Realms features, QOL and In-game API Viewer (soon!)"
 credits=""
 displayURL="https://www.curseforge.com/minecraft/mc-mods/originatia"
 authors="SteveKunG"

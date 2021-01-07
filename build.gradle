@@ -44,7 +44,7 @@ minecraft {
             workingDirectory project.file("run")
             source sourceSets.main
             args "--mixin", "mixins.originatia.json", "--username", username, "--password", password
-            jvmArgs "-Dmixin.debug.export=true"
+            jvmArgs "-Dmixin.debug.export=true", "-Dmixin.debug.verbose=true"
         }
     }
 }
@@ -55,10 +55,10 @@ configurations {
 }
 
 shadowJar {
-    configurations = [project.configurations.embed]
+    //configurations = [project.configurations.embed]
     baseName = "Originatia-" + mcVersion
     classifier = ""
-    relocate "org.apache.commons.text", "com.stevekung.originatia.relocate.org.apache.commons.text"
+    //relocate "org.apache.commons.text", "com.stevekung.originatia.relocate.org.apache.commons.text"
 }
 
 dependencies {
