@@ -23,10 +23,13 @@ import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.TickEvent;
@@ -118,11 +121,19 @@ public class MainEventHandler
     {
         ITextComponent component = event.getMessage();
 
-        if (false && event.getType() == ChatType.SYSTEM)//TODO Config
+        if (event.getType() == ChatType.SYSTEM)//TODO Config
         {
-            if (component.getString().toLowerCase(Locale.ROOT).contains("gg"))
+            String message = TextFormatting.getTextWithoutFormattingCodes(component.getString());
+
+            if (false && message.toLowerCase(Locale.ROOT).contains("gg"))
             {
                 event.setCanceled(true);
+            }
+            //System.out.println(StringEscapeUtils.escapeJava(TextFormatting.getTextWithoutFormattingCodes(component.getString())));
+
+            if (message.startsWith("ꑠ§x"))
+            {
+                this.mc.world.playSound(this.mc.player, this.mc.player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
             }
         }
     }
