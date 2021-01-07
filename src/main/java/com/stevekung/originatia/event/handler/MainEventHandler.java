@@ -14,6 +14,7 @@ import net.minecraft.command.arguments.BlockStateParser;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -44,6 +45,11 @@ public class MainEventHandler
                     StringBuilder stringbuilder = new StringBuilder(BlockStateParser.toString(state));
                     System.out.println(stringbuilder);
                     this.mc.keyboardListener.setClipboardString(stringbuilder.toString());
+                }
+                if (this.mc.objectMouseOver instanceof EntityRayTraceResult)
+                {
+                    EntityRayTraceResult result = (EntityRayTraceResult)this.mc.objectMouseOver;
+                    System.out.println(result.getEntity());
                 }
             }
 

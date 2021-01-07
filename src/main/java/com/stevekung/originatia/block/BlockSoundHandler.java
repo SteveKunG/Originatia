@@ -134,7 +134,6 @@ public class BlockSoundHandler
                 }
             }
         }
-
         return state.getSoundType(world, pos, entity);
     }
 
