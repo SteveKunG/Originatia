@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import org.spongepowered.asm.mixin.Mixin;
 
-import com.stevekung.originatia.event.handler.SoundTest;
+import com.stevekung.originatia.block.BlockSoundHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -20,6 +20,6 @@ public abstract class MixinBlock implements IForgeBlock
     @Override
     public SoundType getSoundType(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity)
     {
-        return SoundTest.instance.setBlockSound(state, world, pos, entity, this.getBlock());
+        return BlockSoundHandler.getBlockSound(state, world, pos, entity, this.getBlock());
     }
 }

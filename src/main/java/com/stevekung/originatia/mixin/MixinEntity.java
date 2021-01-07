@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import com.stevekung.originatia.event.handler.SoundTest;
+import com.stevekung.originatia.block.BlockSoundHandler;
 import com.stevekung.originatia.utils.Utils;
 
 import net.minecraft.block.Block;
@@ -23,7 +23,7 @@ public class MixinEntity
     @Redirect(method = "playStepSound(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V", at = @At(value = "INVOKE", remap = false, target = "net/minecraft/block/BlockState.getSoundType(Lnet/minecraft/world/IWorldReader;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/Entity;)Lnet/minecraft/block/SoundType;", ordinal = 0))
     private SoundType playStepSound(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity)
     {
-        return SoundTest.instance.setStepSound(state, world, pos, entity);
+        return BlockSoundHandler.getStepSound(state, world, pos, entity);
     }
 
     @Redirect(method = "playStepSound(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V", at = @At(value = "INVOKE", target = "net/minecraft/block/BlockState.isIn(Lnet/minecraft/block/Block;)Z"))
@@ -33,6 +33,6 @@ public class MixinEntity
         {
             return state.isIn(Blocks.TRIPWIRE);
         }
-        return state.isIn(Blocks.SNOW);
+        return state.isIn(block);
     }
 }

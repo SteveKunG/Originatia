@@ -6,7 +6,7 @@ public class SimpleBlockSoundData implements ISoundData
 {
     private final SoundType type;
 
-    public SimpleBlockSoundData(SoundType type)
+    private SimpleBlockSoundData(SoundType type)
     {
         this.type = type;
     }

@@ -33,7 +33,7 @@ public class MainEventHandler
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event)
     {
-        if (ClientUtils.isKeyDown(GLFW.GLFW_KEY_F7))
+        if (GameProfileUtils.isSteveKunG() && ClientUtils.isKeyDown(GLFW.GLFW_KEY_F7))
         {
             if (this.mc.objectMouseOver != null)
             {
@@ -47,18 +47,15 @@ public class MainEventHandler
                 }
             }
 
-            if (GameProfileUtils.isSteveKunG())
+            if (this.mc.currentScreen != null && this.mc.currentScreen instanceof ContainerScreen)
             {
-                if (this.mc.currentScreen != null && this.mc.currentScreen instanceof ContainerScreen)
-                {
-                    ContainerScreen container = (ContainerScreen)this.mc.currentScreen;
-                    Slot slot = container.getSlotUnderMouse();
+                ContainerScreen container = (ContainerScreen)this.mc.currentScreen;
+                Slot slot = container.getSlotUnderMouse();
 
-                    if (slot != null && slot.getHasStack())
-                    {
-                        ItemStack itemStack = slot.getStack();
-                        this.mc.keyboardListener.setClipboardString("/give @s " + itemStack.getItem().getRegistryName() + itemStack.getTag());
-                    }
+                if (slot != null && slot.getHasStack())
+                {
+                    ItemStack itemStack = slot.getStack();
+                    this.mc.keyboardListener.setClipboardString("/give @s " + itemStack.getItem().getRegistryName() + itemStack.getTag());
                 }
             }
         }

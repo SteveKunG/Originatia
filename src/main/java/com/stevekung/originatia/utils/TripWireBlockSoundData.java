@@ -7,7 +7,7 @@ public class TripWireBlockSoundData implements ISoundData
     private final SoundType type;
     private final String state;
 
-    public TripWireBlockSoundData(SoundType type, String state)
+    private TripWireBlockSoundData(SoundType type, String state)
     {
         this.type = type;
         this.state = state;

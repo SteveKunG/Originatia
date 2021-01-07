@@ -9,7 +9,7 @@ public class NoteBlockSoundData implements ISoundData
     private final NoteBlockInstrument instrument;
     private final int[] note;
 
-    public NoteBlockSoundData(SoundType type, NoteBlockInstrument instrument, int... note)
+    private NoteBlockSoundData(SoundType type, NoteBlockInstrument instrument, int... note)
     {
         this.type = type;
         this.instrument = instrument;

@@ -1,4 +1,4 @@
-package com.stevekung.originatia.event.handler;
+package com.stevekung.originatia.block;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -24,52 +24,14 @@ import net.minecraft.state.properties.NoteBlockInstrument;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 
-public class SoundTest
+public class BlockSoundHandler
 {
-    public static final SoundTest instance = new SoundTest();
-    public final Map<Block, List<ISoundData>> DATA = Maps.newHashMap();
-    public final Map<Block, List<ISoundData>> TRIPWIRE = Maps.newHashMap();
+    public static final Map<Block, List<ISoundData>> DATA = Maps.newHashMap();
+    public static final Map<Block, List<ISoundData>> TRIPWIRE = Maps.newHashMap();
 
-    public SoundType setStepSound(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity)
+    static
     {
-        if (entity != null)
-        {
-            Collection<ISoundData> tdatas = this.TRIPWIRE.get(state.getBlock());
-
-            if (tdatas != null)
-            {
-                for (ISoundData data : tdatas)
-                {
-                    if (data instanceof TripWireBlockSoundData)
-                    {
-                        TripWireBlockSoundData tData = (TripWireBlockSoundData)data;
-
-                        try
-                        {
-                            BlockStateInput input = BlockStateArgument.blockState().parse(new StringReader(tData.getState()));
-
-                            if (entity.world.getBlockState(pos.up()).equals(input.getState()))
-                            {
-                                System.out.println(tData.getType());
-                                return tData.getType();
-                            }
-                        }
-                        catch (CommandSyntaxException e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-        }
-
-        return state.getSoundType(world, pos, entity);
-    }
-
-    @SuppressWarnings("deprecation")
-    public SoundType setBlockSound(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity, Block block)
-    {
-        this.TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
+        TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=true,west=false]"),
@@ -116,7 +78,7 @@ public class SoundTest
                 TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]")
                 ));
 
-        this.DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASS, 15, 16, 18, 19, 20, 21, 22, 23, 24),
+        DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASS, 15, 16, 18, 19, 20, 21, 22, 23, 24),
                 NoteBlockSoundData.create(SoundType.CORAL, NoteBlockInstrument.BASS, 17),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BELL, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASEDRUM, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12),
@@ -138,9 +100,48 @@ public class SoundTest
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.BANJO, 5, 6, 7, 11)
                 ));
 
-        this.DATA.putAll(this.TRIPWIRE);
+        DATA.putAll(TRIPWIRE);
+    }
 
-        Collection<ISoundData> datas = this.DATA.get(state.getBlock());
+    public static SoundType getStepSound(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity)
+    {
+        if (entity != null)
+        {
+            Collection<ISoundData> tdatas = BlockSoundHandler.TRIPWIRE.get(state.getBlock());
+
+            if (tdatas != null)
+            {
+                for (ISoundData data : tdatas)
+                {
+                    if (data instanceof TripWireBlockSoundData)
+                    {
+                        TripWireBlockSoundData tData = (TripWireBlockSoundData)data;
+
+                        try
+                        {
+                            BlockStateInput input = BlockStateArgument.blockState().parse(new StringReader(tData.getState()));
+
+                            if (entity.world.getBlockState(pos.up()).equals(input.getState()))
+                            {
+                                return tData.getType();
+                            }
+                        }
+                        catch (CommandSyntaxException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+
+        return state.getSoundType(world, pos, entity);
+    }
+
+    @SuppressWarnings("deprecation")
+    public static SoundType getBlockSound(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity, Block block)
+    {
+        Collection<ISoundData> datas = BlockSoundHandler.DATA.get(state.getBlock());
 
         if (datas != null)
         {
@@ -167,17 +168,11 @@ public class SoundTest
                     try
                     {
                         BlockStateInput input = BlockStateArgument.blockState().parse(new StringReader(tData.getState()));
-                        //                        BlockStateInput input1 = BlockStateArgument.blockState().parse(new StringReader("minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=false]"));
 
                         if (state.equals(input.getState()))
                         {
-                            System.out.println(tData.getType());
                             return tData.getType();
                         }
-                        //                        if (world.getBlockState(pos.up()).equals(input1.getState()))
-                        //                        {
-                        //                            return SoundType.LADDER;
-                        //                        }
                     }
                     catch (CommandSyntaxException e)
                     {
