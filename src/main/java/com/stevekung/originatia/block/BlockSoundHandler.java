@@ -11,6 +11,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.stevekung.originatia.config.OriginRealmsConfig;
 import com.stevekung.originatia.utils.ISoundData;
 import com.stevekung.originatia.utils.NoteBlockSoundData;
 import com.stevekung.originatia.utils.SimpleBlockSoundData;
@@ -26,8 +27,8 @@ import net.minecraft.world.IWorldReader;
 
 public class BlockSoundHandler
 {
-    public static final Map<Block, List<ISoundData>> DATA = Maps.newHashMap();
-    public static final Map<Block, List<ISoundData>> TRIPWIRE = Maps.newHashMap();
+    private static final Map<Block, List<ISoundData>> DATA = Maps.newHashMap();
+    private static final Map<Block, List<ISoundData>> TRIPWIRE = Maps.newHashMap();
 
     static
     {
@@ -105,7 +106,7 @@ public class BlockSoundHandler
 
     public static SoundType getStepSound(BlockState state, IWorldReader world, BlockPos pos, @Nullable Entity entity)
     {
-        if (entity != null)
+        if (OriginRealmsConfig.GENERAL.enableFixBlockSounds.get() && entity != null)
         {
             Collection<ISoundData> tdatas = BlockSoundHandler.TRIPWIRE.get(state.getBlock());
 
@@ -142,7 +143,7 @@ public class BlockSoundHandler
     {
         Collection<ISoundData> datas = BlockSoundHandler.DATA.get(state.getBlock());
 
-        if (datas != null)
+        if (OriginRealmsConfig.GENERAL.enableFixBlockSounds.get() && datas != null)
         {
             for (ISoundData data : datas)
             {

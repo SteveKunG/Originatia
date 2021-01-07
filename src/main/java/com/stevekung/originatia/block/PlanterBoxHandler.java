@@ -3,6 +3,8 @@ package com.stevekung.originatia.block;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.stevekung.originatia.config.OriginRealmsConfig;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NoteBlock;
@@ -18,24 +20,30 @@ public class PlanterBoxHandler
 {
     public static void clickBlock(BlockPos pos, Direction direction, Minecraft mc, CallbackInfoReturnable info)
     {
-        BlockState state = mc.world.getBlockState(pos);
-
-        if (!(mc.player.isSneaking() && mc.player.getHeldItemMainhand().isEmpty() && direction != Direction.UP) && state.getBlock() == Blocks.NOTE_BLOCK && state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
+        if (OriginRealmsConfig.GENERAL.safeRemovePlanterBox.get())
         {
-            info.setReturnValue(true);
+            BlockState state = mc.world.getBlockState(pos);
+
+            if (!(mc.player.isSneaking() && mc.player.getHeldItemMainhand().isEmpty() && direction != Direction.UP) && state.getBlock() == Blocks.NOTE_BLOCK && state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
+            {
+                info.setReturnValue(true);
+            }
         }
     }
 
     public static void clickEntity(PlayerEntity player, Entity targetEntity, Minecraft mc, CallbackInfo info)
     {
-        if (targetEntity instanceof ItemFrameEntity)
+        if (OriginRealmsConfig.GENERAL.safeRemovePlanterBox.get())
         {
-            ItemFrameEntity frame = (ItemFrameEntity)targetEntity;
-            BlockState state = frame.world.getBlockState(frame.getPosition().down());
-
-            if (!(mc.player.isSneaking() && mc.player.getHeldItemMainhand().isEmpty()) && state.getBlock() == Blocks.NOTE_BLOCK && state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
+            if (targetEntity instanceof ItemFrameEntity)
             {
-                info.cancel();
+                ItemFrameEntity frame = (ItemFrameEntity)targetEntity;
+                BlockState state = frame.world.getBlockState(frame.getPosition().down());
+
+                if (!(mc.player.isSneaking() && mc.player.getHeldItemMainhand().isEmpty()) && state.getBlock() == Blocks.NOTE_BLOCK && state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
+                {
+                    info.cancel();
+                }
             }
         }
     }

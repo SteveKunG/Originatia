@@ -118,7 +118,7 @@ public class MainEventHandler
     {
         ITextComponent component = event.getMessage();
 
-        if (event.getType() == ChatType.SYSTEM)
+        if (false && event.getType() == ChatType.SYSTEM)//TODO Config
         {
             if (component.getString().toLowerCase(Locale.ROOT).contains("gg"))
             {
