@@ -1,4 +1,4 @@
-package com.stevekung.originrealmscatia.event.handler;
+package com.stevekung.originatia.event.handler;
 
 import java.util.Locale;
 

@@ -1,4 +1,4 @@
-package com.stevekung.originrealmscatia.utils;
+package com.stevekung.originatia.utils;
 
 import net.minecraft.block.SoundType;
 

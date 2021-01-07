@@ -1,10 +1,10 @@
-package com.stevekung.originrealmscatia.mixin;
+package com.stevekung.originatia.mixin;
 
 import javax.annotation.Nullable;
 
 import org.spongepowered.asm.mixin.Mixin;
 
-import com.stevekung.originrealmscatia.event.handler.SoundTest;
+import com.stevekung.originatia.event.handler.SoundTest;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

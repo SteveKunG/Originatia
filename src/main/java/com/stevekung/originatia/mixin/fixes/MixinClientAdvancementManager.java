@@ -1,11 +1,11 @@
-package com.stevekung.originrealmscatia.mixin.fixes;
+package com.stevekung.originatia.mixin.fixes;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.stevekung.originrealmscatia.utils.Utils;
+import com.stevekung.originatia.utils.Utils;
 
 import net.minecraft.client.multiplayer.ClientAdvancementManager;
 import net.minecraft.network.play.server.SAdvancementInfoPacket;

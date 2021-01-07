@@ -1,41 +1,41 @@
 modLoader="javafml"
 loaderVersion="[35,)"
-updateJSONURL="https://raw.githubusercontent.com/SteveKunG/VersionCheckLibrary/master/originrealmscatia_version.json"
-issueTrackerURL="https://github.com/SteveKunG/OriginRealmscatia/issues"
+updateJSONURL="https://raw.githubusercontent.com/SteveKunG/VersionCheckLibrary/master/originatia_version.json"
+issueTrackerURL="https://github.com/SteveKunG/Originatia/issues"
 license="MIT License"
 
 [[mods]]
-modId="originrealmscatia"
+modId="originatia"
 version="1.0.0"
-displayName="OriginRealmscatia"
-description="Useful Mod for Origin Realms server!"
-credits="Beta test"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/originrealmscatia"
+displayName="Originatia"
+description="Useful QOL Mod for Origin Realms server!"
+credits=""
+displayURL="https://www.curseforge.com/minecraft/mc-mods/originatia"
 authors="SteveKunG"
 logoFile="logo.png"
 
-[[dependencies.originrealmscatia]]
+[[dependencies.originatia]]
     modId="forge"
     mandatory=true
     versionRange="[35.1.0,)"
     ordering="NONE"
     side="CLIENT"
 
-[[dependencies.originrealmscatia]]
+[[dependencies.originatia]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.16.4,)"
     ordering="NONE"
     side="CLIENT"
 
-[[dependencies.originrealmscatia]]
+[[dependencies.originatia]]
     modId="stevekungs_lib"
     mandatory=true
     versionRange="[4.0.0,)"
     ordering="NONE"
     side="CLIENT"
 
-[[dependencies.originrealmscatia]]
+[[dependencies.originatia]]
     modId="indicatia"
     mandatory=false
     versionRange="[4.0.0,)"

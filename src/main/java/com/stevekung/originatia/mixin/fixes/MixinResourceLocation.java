@@ -1,4 +1,4 @@
-package com.stevekung.originrealmscatia.mixin.fixes;
+package com.stevekung.originatia.mixin.fixes;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

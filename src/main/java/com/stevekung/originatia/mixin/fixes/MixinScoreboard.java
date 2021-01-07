@@ -1,4 +1,4 @@
-package com.stevekung.originrealmscatia.mixin.fixes;
+package com.stevekung.originatia.mixin.fixes;
 
 import java.util.Map;
 
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.stevekung.originrealmscatia.utils.Utils;
+import com.stevekung.originatia.utils.Utils;
 
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;

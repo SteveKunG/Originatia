@@ -29,8 +29,8 @@ apply plugin: "eclipse"
 import net.minecraftforge.gradle.common.task.SignJar
 
 version = project.version
-group = "com.stevekung.originrealmscatia"
-archivesBaseName = "OriginRealmscatiaForge"
+group = "com.stevekung.originatia"
+archivesBaseName = "Originatia"
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = 1.8
 println("Java: " + System.getProperty("java.version") + " JVM: " + System.getProperty("java.vm.version") + "(" + System.getProperty("java.vendor") + ") Arch: " + System.getProperty("os.arch"))
 compileJava.options.encoding = "UTF-8"
@@ -43,7 +43,7 @@ minecraft {
         client {
             workingDirectory project.file("run")
             source sourceSets.main
-            args "--mixin", "mixins.originrealmscatia.json", "--username", username, "--password", password
+            args "--mixin", "mixins.originatia.json", "--username", username, "--password", password
             jvmArgs "-Dmixin.debug.export=true"
         }
     }
@@ -56,9 +56,9 @@ configurations {
 
 shadowJar {
     configurations = [project.configurations.embed]
-    baseName = "OriginRealmscatiaForge-" + mcVersion
+    baseName = "Originatia-" + mcVersion
     classifier = ""
-    relocate "org.apache.commons.text", "com.stevekung.originrealmscatia.relocate.org.apache.commons.text"
+    relocate "org.apache.commons.text", "com.stevekung.originatia.relocate.org.apache.commons.text"
 }
 
 dependencies {
@@ -83,7 +83,7 @@ repositories {
 
 sourceSets {
     main {
-        ext.refMap = "mixins.originrealmscatia.refmap.json"
+        ext.refMap = "mixins.originatia.refmap.json"
     }
 }
 
@@ -96,10 +96,10 @@ reobf {
 
 jar {
     manifest {
-        attributes("MixinConnector": "com.stevekung.originrealmscatia.core.OriginRealmscatiaMixinConnector"
+        attributes("MixinConnector": "com.stevekung.originatia.core.OriginatiaMixinConnector"
         )
     }
-    baseName = "OriginRealmscatiaForge-" + mcVersion
+    baseName = "Originatia-" + mcVersion
 }
 
 task sourcesJar(type: Jar) {
@@ -107,7 +107,7 @@ task sourcesJar(type: Jar) {
     from(configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
         exclude "LICENSE.txt", "META-INF/*.txt", "META-INF/MANIFSET.MF", "META-INF/maven/**", "META-INF/*.RSA", "META-INF/*.SF"
     }
-    baseName = "OriginRealmscatiaForge-" + mcVersion
+    baseName = "Originatia-" + mcVersion
     classifier = "sources"
 }
 
@@ -117,10 +117,10 @@ task deobfJar(type: Jar) {
         exclude "LICENSE.txt", "META-INF/*.txt", "META-INF/MANIFSET.MF", "META-INF/maven/**", "META-INF/*.RSA", "META-INF/*.SF"
     }
     manifest {
-        attributes("MixinConnector": "com.stevekung.originrealmscatia.core.OriginRealmscatiaMixinConnector"
+        attributes("MixinConnector": "com.stevekung.originatia.core.OriginatiaMixinConnector"
         )
     }
-    baseName = "OriginRealmscatiaForge-" + mcVersion
+    baseName = "Originatia-" + mcVersion
     classifier = "deobf"
 }
 
@@ -140,7 +140,7 @@ curseforge {
             addGameVersion mcVersion
 
             mainArtifact(jar) {
-                displayName = "OriginRealmscatiaForge-" + mcVersion + "-" + version
+                displayName = "Originatia-" + mcVersion + "-" + version
                 relations {
                     requiredLibrary "stevekungs-lib"
                     optionalLibrary "indicatia"

@@ -1,4 +1,4 @@
-package com.stevekung.originrealmscatia.utils;
+package com.stevekung.originatia.utils;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

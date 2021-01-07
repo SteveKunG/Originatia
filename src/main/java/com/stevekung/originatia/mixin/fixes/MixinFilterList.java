@@ -1,4 +1,4 @@
-package com.stevekung.originrealmscatia.mixin.fixes;
+package com.stevekung.originatia.mixin.fixes;
 
 import java.util.UUID;
 

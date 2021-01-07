@@ -1,6 +1,6 @@
-package com.stevekung.originrealmscatia.core;
+package com.stevekung.originatia.core;
 
-import com.stevekung.originrealmscatia.event.handler.MainEventHandler;
+import com.stevekung.originatia.event.handler.MainEventHandler;
 import com.stevekung.stevekungslib.utils.CommonUtils;
 import com.stevekung.stevekungslib.utils.LoggerBase;
 import com.stevekung.stevekungslib.utils.VersionChecker;
@@ -9,21 +9,21 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 
-@Mod(OriginRealmscatiaMod.MOD_ID)
-public class OriginRealmscatiaMod
+@Mod(OriginatiaMod.MOD_ID)
+public class OriginatiaMod
 {
-    public static final String MOD_ID = "originrealmscatia";
-    public static final LoggerBase LOGGER = new LoggerBase("OriginRealmscatia");
+    public static final String MOD_ID = "originatia";
+    public static final LoggerBase LOGGER = new LoggerBase("Originatia");
     public static VersionChecker CHECKER;
-    private static final String URL = "https://www.curseforge.com/minecraft/mc-mods/originrealmscatia";
+    private static final String URL = "https://www.curseforge.com/minecraft/mc-mods/originatia";
 
-    public OriginRealmscatiaMod()
+    public OriginatiaMod()
     {
         //        CommonUtils.registerConfig(ModConfig.Type.CLIENT, SkyBlockcatiaConfig.GENERAL_BUILDER);
         //        CommonUtils.registerModEventBus(SkyBlockcatiaConfig.class);
         CommonUtils.addModListener(this::phaseOne);
         CommonUtils.addModListener(this::loadComplete);
-        OriginRealmscatiaMod.CHECKER = new VersionChecker(this, "OriginRealmscatia", URL);
+        OriginatiaMod.CHECKER = new VersionChecker(this, "Originatia", URL);
     }
 
     private void phaseOne(FMLCommonSetupEvent event)

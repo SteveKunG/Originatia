@@ -1,11 +1,11 @@
-package com.stevekung.originrealmscatia.mixin;
+package com.stevekung.originatia.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.stevekung.originrealmscatia.utils.Utils;
+import com.stevekung.originatia.utils.Utils;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.NoteBlock;

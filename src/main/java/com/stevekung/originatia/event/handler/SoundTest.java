@@ -1,4 +1,4 @@
-package com.stevekung.originrealmscatia.event.handler;
+package com.stevekung.originatia.event.handler;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,10 +11,10 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.stevekung.originrealmscatia.utils.ISoundData;
-import com.stevekung.originrealmscatia.utils.NoteBlockSoundData;
-import com.stevekung.originrealmscatia.utils.SimpleBlockSoundData;
-import com.stevekung.originrealmscatia.utils.TripWireBlockSoundData;
+import com.stevekung.originatia.utils.ISoundData;
+import com.stevekung.originatia.utils.NoteBlockSoundData;
+import com.stevekung.originatia.utils.SimpleBlockSoundData;
+import com.stevekung.originatia.utils.TripWireBlockSoundData;
 
 import net.minecraft.block.*;
 import net.minecraft.command.arguments.BlockStateArgument;

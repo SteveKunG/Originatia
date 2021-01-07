@@ -1,4 +1,4 @@
-package com.stevekung.originrealmscatia.mixin.fixes;
+package com.stevekung.originatia.mixin.fixes;
 
 import java.util.Collection;
 
@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import com.stevekung.originrealmscatia.utils.Utils;
+import com.stevekung.originatia.utils.Utils;
 
 import net.minecraft.client.gui.CommandSuggestionHelper;
 import net.minecraft.client.multiplayer.ClientSuggestionProvider;
