@@ -41,6 +41,11 @@ public class MixinScoreboard
     {
         if (Utils.INSTANCE.isOriginRealms())
         {
+            if (playerTeam == null)
+            {
+                info.cancel();
+            }
+
             if (this.that.getPlayersTeam(username) != playerTeam)
             {
                 info.cancel();
@@ -51,6 +56,18 @@ public class MixinScoreboard
                 playerTeam.getMembershipCollection().remove(username);
             }
             info.cancel();
+        }
+    }
+
+    @Inject(method = "addPlayerToTeam(Ljava/lang/String;Lnet/minecraft/scoreboard/ScorePlayerTeam;)Z", cancellable = true, at = @At("HEAD"))
+    private void addPlayerToTeam(String username, ScorePlayerTeam playerTeam, CallbackInfoReturnable info)
+    {
+        if (Utils.INSTANCE.isOriginRealms())
+        {
+            if (playerTeam == null)
+            {
+                info.setReturnValue(false);
+            }
         }
     }
 }
