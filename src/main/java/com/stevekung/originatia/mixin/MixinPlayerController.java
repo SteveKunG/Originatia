@@ -27,12 +27,12 @@ public class MixinPlayerController
     @Inject(method = "clickBlock(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/Direction;)Z", cancellable = true, at = @At("HEAD"))
     private void clickBlock(BlockPos pos, Direction direction, CallbackInfoReturnable info)
     {
-        PlanterBoxHandler.clickBlock(pos, direction, mc, info);
+        PlanterBoxHandler.clickBlock(pos, direction, this.mc, info);
     }
 
     @Inject(method = "attackEntity(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/entity/Entity;)V", cancellable = true, at = @At("HEAD"))
     private void attackEntity(PlayerEntity player, Entity targetEntity, CallbackInfo info)
     {
-        PlanterBoxHandler.clickEntity(player, targetEntity, mc, info);
+        PlanterBoxHandler.clickEntity(player, targetEntity, this.mc, info);
     }
 }
