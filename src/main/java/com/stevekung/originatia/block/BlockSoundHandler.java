@@ -87,7 +87,6 @@ public class BlockSoundHandler
                 NoteBlockSoundData.create(SoundType.GLASS, NoteBlockInstrument.CHIME, 1, 2, 3, 4, 5, 6, 7),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BIT, 1, 2, 3, 4, 5, 6, 7, 16, 17, 18, 19, 20, 21),
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.BIT, 8, 9, 10, 11, 12, 13, 14, 15),
-                NoteBlockSoundData.create(SoundType.BAMBOO, NoteBlockInstrument.BIT, 24),
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.COW_BELL, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 19, 20, 23, 24),
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.DIDGERIDOO, 1, 2),
                 NoteBlockSoundData.create(SoundType.GLASS, NoteBlockInstrument.DIDGERIDOO, 5, 6, 7, 8, 9, 10, 15, 16, 17, 18, 19, 20, 21, 22),
