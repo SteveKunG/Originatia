@@ -32,6 +32,8 @@ public class BlockSoundHandler
 
     static
     {
+        //TODO 1.17 Crystal Sound
+
         TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=false,west=true]"),
@@ -79,8 +81,9 @@ public class BlockSoundHandler
                 TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]")
                 ));
 
-        DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASS, 15, 16, 18, 19, 20, 21, 22, 23, 24),
+        DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASS, 16, 18, 19, 20, 21, 22, 23, 24),
                 NoteBlockSoundData.create(SoundType.CORAL, NoteBlockInstrument.BASS, 17),
+                NoteBlockSoundData.create(SoundType.GROUND, NoteBlockInstrument.BASS, 15),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BELL, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASEDRUM, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12),
                 NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.CHIME, 8, 9, 10, 11, 12, 13),
@@ -90,7 +93,6 @@ public class BlockSoundHandler
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.COW_BELL, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 19, 20, 23, 24),
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.DIDGERIDOO, 1, 2),
                 NoteBlockSoundData.create(SoundType.GLASS, NoteBlockInstrument.DIDGERIDOO, 5, 6, 7, 8, 9, 10, 15, 16, 17, 18, 19, 20, 21, 22),
-                NoteBlockSoundData.create(SoundType.PLANT, NoteBlockInstrument.DIDGERIDOO, 11, 12),
                 NoteBlockSoundData.create(SoundType.GLASS, NoteBlockInstrument.FLUTE, 16, 19, 22),
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.FLUTE, 3, 4, 5, 6, 7, 9, 15, 17, 18, 20, 21, 23, 24),
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.GUITAR, 2, 3, 5, 6, 8, 19, 20, 21),
@@ -100,6 +102,7 @@ public class BlockSoundHandler
                 NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.BANJO, 5, 6, 7, 11)
                 ));
 
+        DATA.put(Blocks.PETRIFIED_OAK_SLAB, ImmutableList.of(SimpleBlockSoundData.create(SoundType.GROUND)));
         DATA.putAll(TRIPWIRE);
     }
 

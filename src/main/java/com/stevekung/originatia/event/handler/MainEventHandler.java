@@ -20,6 +20,8 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.command.arguments.BlockStateParser;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.ItemFrameEntity;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
@@ -62,7 +64,13 @@ public class MainEventHandler
                 if (this.mc.objectMouseOver instanceof EntityRayTraceResult)
                 {
                     EntityRayTraceResult result = (EntityRayTraceResult)this.mc.objectMouseOver;
-                    System.out.println(result.getEntity());
+                    Entity entity = result.getEntity();
+
+                    if (entity instanceof ItemFrameEntity)
+                    {
+                        ItemFrameEntity frame = (ItemFrameEntity)entity;
+                        this.mc.keyboardListener.setClipboardString("/give @s " + frame.getDisplayedItem().getItem().getRegistryName() + frame.getDisplayedItem().getTag());
+                    }
                 }
             }
 
