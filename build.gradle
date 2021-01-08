@@ -140,7 +140,7 @@ curseforge {
             addGameVersion mcVersion
 
             mainArtifact(jar) {
-                displayName = "Originatia-" + mcVersion + "-" + version
+                displayName = "OriginatiaForge-" + mcVersion + "-" + version
                 relations {
                     requiredLibrary "stevekungs-lib"
                     optionalLibrary "indicatia"
