@@ -133,10 +133,10 @@ curseforge {
     if (project.hasProperty("upload_api_key")) {
         apiKey = project.upload_api_key
         project {
-            id = "397441"
+            id = "434676"
             changelog = file("CHANGE_LOG.md")
             changelogType = "markdown"
-            releaseType = "release"
+            releaseType = "alpha"
             addGameVersion mcVersion
 
             mainArtifact(jar) {
