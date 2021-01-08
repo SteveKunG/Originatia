@@ -8,6 +8,7 @@ import org.lwjgl.glfw.GLFW;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.stevekung.originatia.gui.screen.widget.ItemButton;
+import com.stevekung.originatia.utils.ItemUtils;
 import com.stevekung.originatia.utils.Utils;
 import com.stevekung.stevekungslib.utils.GameProfileUtils;
 import com.stevekung.stevekungslib.utils.TextComponentUtils;
@@ -21,8 +22,6 @@ import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.command.arguments.BlockStateParser;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -140,11 +139,6 @@ public class MainEventHandler
 
     private void addButtonsToInventory(GuiScreenEvent.InitGuiEvent.Post event, int width, int height)
     {
-        ItemStack auction = new ItemStack(Items.PAPER);
-        CompoundNBT compound = new CompoundNBT();
-        compound.putInt("CustomModelData", 4017);
-        auction.setTag(compound);
-        auction.setDisplayName(TextComponentUtils.component("Auction House"));
-        event.addWidget(new ItemButton(width + 44, height + 86, auction, button -> this.mc.player.sendChatMessage("/auctionhouse")));
+        event.addWidget(new ItemButton(width + 44, height + 86, ItemUtils.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse")));
     }
 }
