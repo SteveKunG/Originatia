@@ -11,11 +11,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import com.stevekung.originatia.block.PlanterBoxHandler;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.multiplayer.PlayerController;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 
 @Mixin(PlayerController.class)
 public class MixinPlayerController
@@ -34,5 +39,11 @@ public class MixinPlayerController
     private void attackEntity(PlayerEntity player, Entity targetEntity, CallbackInfo info)
     {
         PlanterBoxHandler.clickEntity(player, targetEntity, this.mc, info);
+    }
+
+    @Inject(method = "func_217292_a", cancellable = true, at = @At("HEAD"))
+    private void processRightClick(ClientPlayerEntity player, ClientWorld world, Hand hand, BlockRayTraceResult result, CallbackInfoReturnable<ActionResultType> info)
+    {
+        PlanterBoxHandler.interactBlock(player, world, hand, result, info);
     }
 }
