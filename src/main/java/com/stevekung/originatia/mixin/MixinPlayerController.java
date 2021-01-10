@@ -21,6 +21,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.world.World;
 
 @Mixin(PlayerController.class)
 public class MixinPlayerController
@@ -42,8 +43,14 @@ public class MixinPlayerController
     }
 
     @Inject(method = "func_217292_a", cancellable = true, at = @At("HEAD"))
-    private void processRightClick(ClientPlayerEntity player, ClientWorld world, Hand hand, BlockRayTraceResult result, CallbackInfoReturnable<ActionResultType> info)
+    private void interactBlock(ClientPlayerEntity player, ClientWorld world, Hand hand, BlockRayTraceResult result, CallbackInfoReturnable<ActionResultType> info)
     {
         PlanterBoxHandler.interactBlock(player, world, hand, result, info);
+    }
+
+    @Inject(method = "processRightClick", cancellable = true, at = @At("HEAD"))
+    private void processRightClick(PlayerEntity player, World world, Hand hand, CallbackInfoReturnable<ActionResultType> info)
+    {
+        PlanterBoxHandler.processRightClick(player, world, hand, info);
     }
 }

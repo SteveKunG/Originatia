@@ -4,6 +4,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.stevekung.originatia.config.OriginRealmsConfig;
+import com.stevekung.originatia.mixin.IMixinItem;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -22,6 +23,8 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceContext;
+import net.minecraft.world.World;
 
 public class PlanterBoxHandler
 {
@@ -61,6 +64,18 @@ public class PlanterBoxHandler
         ItemStack itemStack = player.getHeldItem(hand);
 
         if (player.isSneaking() && itemStack.getItem() == Items.WATER_BUCKET && result.getFace() == Direction.UP && state.getBlock() == Blocks.NOTE_BLOCK && state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
+        {
+            info.setReturnValue(ActionResultType.CONSUME);
+        }
+    }
+
+    public static void processRightClick(PlayerEntity player, World world, Hand hand, CallbackInfoReturnable<ActionResultType> info)
+    {
+        BlockRayTraceResult result = IMixinItem.invokeRayTrace(world, player, RayTraceContext.FluidMode.NONE);
+        ItemStack itemStack = player.getHeldItem(hand);
+        BlockState state = world.getBlockState(result.getPos());
+
+        if (itemStack.getItem() == Items.WATER_BUCKET && result.getFace() == Direction.UP && state.getBlock() == Blocks.NOTE_BLOCK && state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
         {
             info.setReturnValue(ActionResultType.FAIL);
         }
