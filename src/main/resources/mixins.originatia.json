@@ -12,6 +12,7 @@
         "MixinEntity",
         "MixinNoteBlock",
         "MixinPlayerController",
+        "MixinTripWireBlock",
         "fixes.MixinClientAdvancementManager",
         "fixes.MixinCommandSuggestionHelper",
         "fixes.MixinFilterList",
