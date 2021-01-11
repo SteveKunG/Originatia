@@ -11,11 +11,12 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.stevekung.originatia.block.data.NoteBlockSoundData;
+import com.stevekung.originatia.block.data.SimpleBlockSoundData;
+import com.stevekung.originatia.block.data.TripWireBlockData;
+import com.stevekung.originatia.block.data.TripWireBlockSoundData;
 import com.stevekung.originatia.config.OriginRealmsConfig;
-import com.stevekung.originatia.utils.ISoundData;
-import com.stevekung.originatia.utils.NoteBlockSoundData;
-import com.stevekung.originatia.utils.SimpleBlockSoundData;
-import com.stevekung.originatia.utils.TripWireBlockSoundData;
+import com.stevekung.originatia.utils.*;
 
 import net.minecraft.block.*;
 import net.minecraft.command.arguments.BlockStateArgument;
@@ -35,40 +36,40 @@ public class BlockSoundHandler
         //TODO 1.17 Crystal Sound
 
         TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"),
+                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.CLOVER),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=true,east=false,north=false,powered=false,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=false,west=false]"),
+                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.MOSS),
+                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.MOSS.getCeilingState()),
+                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.SHELF_FUNGUS),
+                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.AUBRIETA_WHITE),
+                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.AUBRIETA_RED),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=false]"),
+                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.DEAD_LEAVES),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=false,west=false]"),
                 TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=true,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=false,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=true,west=false]"),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.BLUE_CRYSTAL),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.BLUE_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.PURPLE_CRYSTAL),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.PURPLE_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.RED_CRYSTAL),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.RED_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.GREEN_CRYSTAL),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.GREEN_CRYSTAL.getCeilingState()),
                 TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=true,west=true]"),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.YELLOW_CRYSTAL),
+                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.YELLOW_CRYSTAL.getCeilingState()),
                 TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=false,powered=false,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=true,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
@@ -76,8 +77,8 @@ public class BlockSoundHandler
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
                 TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=true,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=true,south=true,west=false]"),
+                TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, TripWireBlockData.TOXIC_MUSHROOM),
+                TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, TripWireBlockData.TOXIC_MUSHROOM.getCeilingState()),
                 TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]")
                 ));
 

@@ -1,4 +1,4 @@
-package com.stevekung.originatia.utils;
+package com.stevekung.originatia.block.data;
 
 import net.minecraft.state.properties.NoteBlockInstrument;
 

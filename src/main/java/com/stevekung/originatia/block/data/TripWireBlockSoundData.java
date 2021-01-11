@@ -1,4 +1,6 @@
-package com.stevekung.originatia.utils;
+package com.stevekung.originatia.block.data;
+
+import com.stevekung.originatia.utils.ISoundData;
 
 import net.minecraft.block.SoundType;
 
@@ -27,5 +29,10 @@ public class TripWireBlockSoundData implements ISoundData
     public static TripWireBlockSoundData create(SoundType type, String state)
     {
         return new TripWireBlockSoundData(type, state);
+    }
+
+    public static TripWireBlockSoundData create(SoundType type, TripWireBlockData data)
+    {
+        return new TripWireBlockSoundData(type, data.getState());
     }
 }

@@ -1,4 +1,6 @@
-package com.stevekung.originatia.utils;
+package com.stevekung.originatia.block.data;
+
+import com.stevekung.originatia.utils.ISoundData;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.state.properties.NoteBlockInstrument;

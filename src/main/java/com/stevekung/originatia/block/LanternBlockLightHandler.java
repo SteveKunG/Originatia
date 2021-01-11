@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.google.common.collect.Lists;
-import com.stevekung.originatia.utils.NoteBlockLightData;
+import com.stevekung.originatia.block.data.NoteBlockLightData;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.NoteBlock;
