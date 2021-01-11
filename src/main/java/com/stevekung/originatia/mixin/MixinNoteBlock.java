@@ -12,14 +12,17 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.NoteBlock;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.properties.NoteBlockInstrument;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
 @Mixin(NoteBlock.class)
@@ -28,6 +31,24 @@ public class MixinNoteBlock extends Block
     private MixinNoteBlock()
     {
         super(null);
+    }
+
+    @Inject(method = "getStateForPlacement(Lnet/minecraft/item/BlockItemUseContext;)Lnet/minecraft/block/BlockState;", cancellable = true, at = @At("HEAD"))
+    private void getStateForPlacement(BlockItemUseContext context, CallbackInfoReturnable<BlockState> info)
+    {
+        if (Utils.INSTANCE.isOriginRealms())
+        {
+            info.setReturnValue(this.getDefaultState());
+        }
+    }
+
+    @Inject(method = "updatePostPlacement(Lnet/minecraft/block/BlockState;Lnet/minecraft/util/Direction;Lnet/minecraft/block/BlockState;Lnet/minecraft/world/IWorld;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;", cancellable = true, at = @At("HEAD"))
+    private void updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos, CallbackInfoReturnable<BlockState> info)
+    {
+        if (Utils.INSTANCE.isOriginRealms())
+        {
+            info.setReturnValue(state);
+        }
     }
 
     @Inject(method = "onBlockActivated", cancellable = true, at = @At("HEAD"))
