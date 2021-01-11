@@ -14,7 +14,6 @@
         "MixinPlayerController",
         "MixinTripWireBlock",
         "fixes.MixinClientAdvancementManager",
-        "fixes.MixinCommandSuggestionHelper",
         "fixes.MixinFilterList",
         "fixes.MixinResourceLocation",
         "fixes.MixinScoreboard",
