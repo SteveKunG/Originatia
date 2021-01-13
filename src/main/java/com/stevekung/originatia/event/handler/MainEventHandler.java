@@ -9,6 +9,7 @@ import org.lwjgl.glfw.GLFW;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.stevekung.originatia.gui.screen.widget.ItemButton;
+import com.stevekung.originatia.keybinding.KeyBindingHandler;
 import com.stevekung.originatia.utils.ItemUtils;
 import com.stevekung.originatia.utils.Utils;
 import com.stevekung.stevekungslib.utils.GameProfileUtils;
@@ -39,6 +40,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -152,6 +154,15 @@ public class MainEventHandler
             {
                 this.mc.world.playSound(this.mc.player, this.mc.player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public void onPressKey(InputEvent.KeyInputEvent event)
+    {
+        if (KeyBindingHandler.KEY_QUICK_NAVIGATOR.isKeyDown())
+        {
+            this.mc.player.sendChatMessage("/navigator");
         }
     }
 

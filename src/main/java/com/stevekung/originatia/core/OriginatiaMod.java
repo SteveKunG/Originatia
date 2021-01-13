@@ -3,6 +3,7 @@ package com.stevekung.originatia.core;
 import com.stevekung.originatia.config.OriginRealmsConfig;
 import com.stevekung.originatia.event.handler.MainEventHandler;
 import com.stevekung.originatia.gui.screen.OriginRealmsChatScreen;
+import com.stevekung.originatia.keybinding.KeyBindingHandler;
 import com.stevekung.originatia.utils.ThreadCommandData;
 import com.stevekung.stevekungslib.utils.CommonUtils;
 import com.stevekung.stevekungslib.utils.LoggerBase;
@@ -34,6 +35,7 @@ public class OriginatiaMod
     {
         CommonUtils.registerEventHandler(new MainEventHandler());
         CommonUtils.registerEventHandler(new OriginRealmsChatScreen());
+        KeyBindingHandler.init();
     }
 
     private void loadComplete(FMLLoadCompleteEvent event)
