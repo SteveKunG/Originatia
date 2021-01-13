@@ -84,7 +84,7 @@ public class PaperItemHandler
                 {
                     itemstack.shrink(1);
                 }
-                MainEventHandler.playSound = true;
+                MainEventHandler.playStoneSound = true;
                 return ActionResultType.func_233537_a_(world.isRemote);
             }
         }

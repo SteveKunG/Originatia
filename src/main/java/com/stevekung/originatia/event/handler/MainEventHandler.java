@@ -33,6 +33,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.gui.GuiUtils;
@@ -40,6 +41,8 @@ import net.minecraftforge.fml.client.gui.GuiUtils;
 public class MainEventHandler
 {
     private final Minecraft mc;
+
+    public static boolean playStoneSound;
 
     public MainEventHandler()
     {
@@ -142,6 +145,16 @@ public class MainEventHandler
             {
                 this.mc.world.playSound(this.mc.player, this.mc.player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public void onPlaySound(PlaySoundEvent event)
+    {
+        if (MainEventHandler.playStoneSound && event.getName().equals("block.stone.place"))
+        {
+            event.setResultSound(null);
+            MainEventHandler.playStoneSound = false;
         }
     }
 
