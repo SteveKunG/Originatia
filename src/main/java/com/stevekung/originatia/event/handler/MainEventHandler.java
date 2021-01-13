@@ -15,10 +15,13 @@ import com.stevekung.stevekungslib.utils.TextComponentUtils;
 import com.stevekung.stevekungslib.utils.client.ClientUtils;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.command.arguments.BlockStateParser;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemFrameEntity;
@@ -32,6 +35,7 @@ import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
@@ -155,6 +159,24 @@ public class MainEventHandler
         {
             event.setResultSound(null);
             MainEventHandler.playStoneSound = false;
+        }
+    }
+
+    @SubscribeEvent
+    public void onClientLoggedIn(ClientPlayerNetworkEvent.LoggedInEvent event)
+    {
+        if (Utils.INSTANCE.isOriginRealms())
+        {
+            RenderTypeLookup.setRenderLayer(Blocks.TRIPWIRE, RenderType.getCutout());
+        }
+    }
+
+    @SubscribeEvent
+    public void onClientLoggedOut(ClientPlayerNetworkEvent.LoggedOutEvent event)
+    {
+        if (Utils.INSTANCE.isOriginRealms())
+        {
+            RenderTypeLookup.setRenderLayer(Blocks.TRIPWIRE, RenderType.getTripwire());
         }
     }
 
