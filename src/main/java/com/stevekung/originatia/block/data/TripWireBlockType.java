@@ -98,7 +98,7 @@ public enum TripWireBlockType
         }
         return null;
     }
-    
+
     public static boolean hasCeiling(String id)
     {
         for (TripWireBlockType data : values())

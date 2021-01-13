@@ -13,10 +13,10 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.stevekung.originatia.block.data.NoteBlockSoundType;
 import com.stevekung.originatia.block.data.SimpleBlockSoundType;
-import com.stevekung.originatia.block.data.TripWireBlockType;
 import com.stevekung.originatia.block.data.TripWireBlockSoundType;
+import com.stevekung.originatia.block.data.TripWireBlockType;
 import com.stevekung.originatia.config.OriginRealmsConfig;
-import com.stevekung.originatia.utils.*;
+import com.stevekung.originatia.utils.ISoundData;
 
 import net.minecraft.block.*;
 import net.minecraft.command.arguments.BlockStateArgument;
