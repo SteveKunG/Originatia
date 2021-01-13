@@ -8,11 +8,14 @@ import java.util.stream.Collectors;
 import org.lwjgl.glfw.GLFW;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.stevekung.originatia.gui.screen.OriginRealmsChatScreen;
 import com.stevekung.originatia.gui.screen.widget.ItemButton;
 import com.stevekung.originatia.keybinding.KeyBindingHandler;
-import com.stevekung.originatia.utils.ItemUtils;
+import com.stevekung.originatia.utils.ItemUtilsOR;
 import com.stevekung.originatia.utils.Utils;
+import com.stevekung.stevekungslib.utils.CommonUtils;
 import com.stevekung.stevekungslib.utils.GameProfileUtils;
+import com.stevekung.stevekungslib.utils.ItemUtils;
 import com.stevekung.stevekungslib.utils.TextComponentUtils;
 import com.stevekung.stevekungslib.utils.client.ClientUtils;
 
@@ -205,6 +208,7 @@ public class MainEventHandler
         if (Utils.INSTANCE.isOriginRealms())
         {
             RenderTypeLookup.setRenderLayer(Blocks.TRIPWIRE, RenderType.getCutout());
+            CommonUtils.runAsync(() -> OriginRealmsChatScreen.selfItemCache = ItemUtils.getPlayerHead(GameProfileUtils.getUsername()));
         }
     }
 
@@ -219,6 +223,6 @@ public class MainEventHandler
 
     private void addButtonsToInventory(GuiScreenEvent.InitGuiEvent.Post event, int width, int height)
     {
-        event.addWidget(new ItemButton(width + 44, height + 86, ItemUtils.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse")));
+        event.addWidget(new ItemButton(width + 44, height + 86, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse")));
     }
 }

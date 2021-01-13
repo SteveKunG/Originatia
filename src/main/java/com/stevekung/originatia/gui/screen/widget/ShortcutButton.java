@@ -18,14 +18,15 @@ import net.minecraftforge.fml.client.gui.GuiUtils;
 public class ShortcutButton extends Button
 {
     private static final ResourceLocation BLANK = new ResourceLocation("originatia:textures/gui/blank.png");
-    private static final ResourceLocation MAIN = new ResourceLocation("originatia:textures/gui/main.png");
+    private final ResourceLocation icon;
     private final Minecraft mc;
     private final ITextComponent tooltips;
     private final ItemStack head;
 
-    public ShortcutButton(int parentWidth, ITextComponent tooltips, Button.IPressable pressable, ItemStack head)
+    public ShortcutButton(int parentWidth, ITextComponent tooltips, Button.IPressable pressable, ItemStack head, String icon)
     {
         super(parentWidth - 130, 20, 20, 20, TextComponentUtils.component("Shortcut Button"), pressable);
+        this.icon = new ResourceLocation("originatia:textures/gui/" + icon + ".png");
         this.tooltips = tooltips;
         this.mc = Minecraft.getInstance();
         this.head = head;
@@ -37,7 +38,7 @@ public class ShortcutButton extends Button
     {
         if (this.visible)
         {
-            this.mc.getTextureManager().bindTexture(this.head.isEmpty() ? MAIN : BLANK);
+            this.mc.getTextureManager().bindTexture(this.head.isEmpty() ? this.icon : BLANK);
             RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
             boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
             AbstractGui.blit(matrixStack, this.x, this.y, flag ? 20 : 0, 0, this.width, this.height, 40, 20);

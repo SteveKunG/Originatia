@@ -31,7 +31,7 @@ public class ThreadCommandData implements Runnable
             URL url = new URL("https://raw.githubusercontent.com/SteveKunG/Indicatia/minigame_data/origin_realms.json");
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openConnection().getInputStream(), StandardCharsets.UTF_8));
             CommandData.DATA = Arrays.stream(new Gson().fromJson(in, CommandData[].class)).collect(Collectors.toList());
-            CommandData.DATA.forEach(command -> command.getCommands().sort((minigame1, minigame2) -> !command.isSorted() ? 1 : new CompareToBuilder().append(minigame1.isMinigame(), minigame2.isMinigame()).append(minigame1.getName(), minigame2.getName()).build()));
+            CommandData.DATA.forEach(command -> command.getCommands().sort((minigame1, minigame2) -> !command.isSorted() ? 1 : new CompareToBuilder().append(minigame1.getName(), minigame2.getName()).build()));
             CommandData.DATA.sort((minigame1, minigame2) -> minigame2.getName().equals("Main") ? 1 : new CompareToBuilder().append(minigame1.getName(), minigame2.getName()).build());
             OriginatiaMod.LOGGER.info("Successfully getting OriginRealms data from GitHub!");
         }

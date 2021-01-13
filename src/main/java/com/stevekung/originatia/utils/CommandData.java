@@ -3,7 +3,6 @@ package com.stevekung.originatia.utils;
 import java.util.List;
 
 import com.google.common.collect.Lists;
-import com.google.gson.annotations.SerializedName;
 
 public class CommandData
 {
@@ -43,16 +42,15 @@ public class CommandData
     {
         private final String name;
         private final String command;
-        @SerializedName("minigame")
-        private final boolean isMinigame;
+        private final String icon;
         private final String uuid;
         private final String texture;
 
-        public Command(String name, String command, boolean isMinigame, String uuid, String texture)
+        public Command(String name, String command, String icon, String uuid, String texture)
         {
             this.name = name;
             this.command = command;
-            this.isMinigame = isMinigame;
+            this.icon = icon;
             this.uuid = uuid;
             this.texture = texture;
         }
@@ -67,9 +65,9 @@ public class CommandData
             return this.command;
         }
 
-        public boolean isMinigame()
+        public String getIcon()
         {
-            return this.isMinigame;
+            return this.icon;
         }
 
         public String getUUID()

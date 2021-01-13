@@ -5,7 +5,7 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.text.ITextComponent;
 
-public class ItemUtils
+public class ItemUtilsOR
 {
     public static ItemStack makeSimpleItem(int modelData, ITextComponent component)
     {

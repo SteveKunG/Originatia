@@ -11,6 +11,7 @@ import com.stevekung.originatia.gui.screen.widget.DropdownShortcutButton.IDropbo
 import com.stevekung.originatia.gui.screen.widget.ShortcutButton;
 import com.stevekung.originatia.utils.CommandData;
 import com.stevekung.originatia.utils.Utils;
+import com.stevekung.stevekungslib.utils.GameProfileUtils;
 import com.stevekung.stevekungslib.utils.ItemUtils;
 import com.stevekung.stevekungslib.utils.TextComponentUtils;
 import com.stevekung.stevekungslib.utils.client.ClientUtils;
@@ -29,6 +30,7 @@ public class OriginRealmsChatScreen implements IDropboxCallback
 {
     private DropdownShortcutButton dropdown;
     private int prevSelect = -1;
+    public static ItemStack selfItemCache;
 
     @SubscribeEvent
     public void onChatInit(ChatScreenEvent.Init event)
@@ -166,12 +168,19 @@ public class OriginRealmsChatScreen implements IDropboxCallback
                     if (data.getName().equals(list.get(this.prevSelect)))
                     {
                         ItemStack skull = ItemStack.EMPTY;
+                        String name = command.getName();
+                        String command2 = command.getCommand();
 
                         if (!StringUtils.isNullOrEmpty(command.getUUID()))
                         {
                             skull = ItemUtils.getSkullItemStack(command.getUUID(), command.getTexture());
                         }
-                        gameBtn.add(new ShortcutButton(width, TextComponentUtils.component(command.getName()), button -> player.sendChatMessage(command.getCommand().startsWith("/") ? command.getCommand() : command.isMinigame() ? "/play " + command.getCommand() : "/" + command.getCommand()), skull));
+                        if (name.startsWith("%s"))
+                        {
+                            name = String.format(name, GameProfileUtils.getUsername());
+                            skull = selfItemCache;
+                        }
+                        gameBtn.add(new ShortcutButton(width, TextComponentUtils.component(name), button -> this.sendCommand(player, command2), skull, command.getIcon()));
                     }
                 }
             }
@@ -213,5 +222,11 @@ public class OriginRealmsChatScreen implements IDropboxCallback
             }
         }
         children.addAll(buttons);
+    }
+
+    private void sendCommand(ClientPlayerEntity player, String command)
+    {
+        command = command.replace("@s", GameProfileUtils.getUsername());
+        player.sendChatMessage(command);
     }
 }
