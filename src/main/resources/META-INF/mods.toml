@@ -6,7 +6,7 @@ license="MIT License"
 
 [[mods]]
 modId="originatia"
-version="0.0.1"
+version="0.0.2"
 displayName="Originatia"
 description="Useful Origin Realms features, QOL and In-game API Viewer (soon!)"
 credits=""
