@@ -1,6 +1,7 @@
 package com.stevekung.originatia.event.handler;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemFrameEntity;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -39,6 +41,7 @@ import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.gui.GuiUtils;
 
@@ -160,6 +163,29 @@ public class MainEventHandler
             event.setResultSound(null);
             MainEventHandler.playStoneSound = false;
         }
+    }
+
+    @SubscribeEvent
+    public void onItemTooltip(ItemTooltipEvent event)
+    {
+        List<ITextComponent> tooltips = event.getToolTip();
+        ItemStack itemStack = event.getItemStack();
+
+        try
+        {
+            if (itemStack.getItem() == Items.PAPER && itemStack.hasTag() && itemStack.getTag().contains("CustomBlock"))
+            {
+                int insertAt = tooltips.size();
+
+                if (this.mc.gameSettings.advancedItemTooltips)
+                {
+                    insertAt -= 2; // item name + nbt
+                }
+
+                tooltips.add(insertAt, TextComponentUtils.formatted("originrealms:" + itemStack.getTag().getString("CustomBlock"), TextFormatting.DARK_GRAY));
+            }
+        }
+        catch (Exception e) {}
     }
 
     @SubscribeEvent
