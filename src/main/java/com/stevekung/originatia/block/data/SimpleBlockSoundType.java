@@ -4,11 +4,11 @@ import com.stevekung.originatia.utils.ISoundData;
 
 import net.minecraft.block.SoundType;
 
-public class SimpleBlockSoundData implements ISoundData
+public class SimpleBlockSoundType implements ISoundData
 {
     private final SoundType type;
 
-    private SimpleBlockSoundData(SoundType type)
+    private SimpleBlockSoundType(SoundType type)
     {
         this.type = type;
     }
@@ -19,8 +19,8 @@ public class SimpleBlockSoundData implements ISoundData
         return this.type;
     }
 
-    public static SimpleBlockSoundData create(SoundType type)
+    public static SimpleBlockSoundType create(SoundType type)
     {
-        return new SimpleBlockSoundData(type);
+        return new SimpleBlockSoundType(type);
     }
 }

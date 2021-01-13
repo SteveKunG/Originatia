@@ -7,7 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.command.arguments.BlockStateArgument;
 import net.minecraft.command.arguments.BlockStateInput;
 
-public enum TripWireBlockData
+public enum TripWireBlockType
 {
     CLOVER("clover", "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"),
     AUBRIETA_WHITE("white_aubrieta", "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=false,west=false]"),
@@ -22,6 +22,7 @@ public enum TripWireBlockData
     GREEN_CRYSTAL("green_crystal", "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=false,west=false]", "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=true,west=false]"),
     PURPLE_CRYSTAL("purple_crystal", "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=false,west=true]", "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=true,west=true]"),
     RED_CRYSTAL("red_crystal", "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=false]", "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=false,west=true]"),
+    WHITE_CRYSTAL("white_crystal", "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=true,south=true,west=true]", "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=true,west=true]"),
 
     ROCK_1("rock_1", "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
 
@@ -31,12 +32,12 @@ public enum TripWireBlockData
     private final String state;
     private final String ceilingState;
 
-    TripWireBlockData(String id, String state)
+    TripWireBlockType(String id, String state)
     {
         this(id, state, null);
     }
 
-    TripWireBlockData(String id, String state, String ceilingState)
+    TripWireBlockType(String id, String state, String ceilingState)
     {
         this.id = id;
         this.state = state;
@@ -60,7 +61,7 @@ public enum TripWireBlockData
 
     public static BlockState getBlockStateById(String id)
     {
-        for (TripWireBlockData data : values())
+        for (TripWireBlockType data : values())
         {
             if (data.getId().equals(id))
             {
@@ -80,9 +81,9 @@ public enum TripWireBlockData
 
     public static BlockState getCeilingBlockStateById(String id)
     {
-        for (TripWireBlockData data : values())
+        for (TripWireBlockType data : values())
         {
-            if (data.getId().equals(id))
+            if (data.getId().equals(id) && data.getCeilingState() != null)
             {
                 try
                 {
@@ -96,5 +97,17 @@ public enum TripWireBlockData
             }
         }
         return null;
+    }
+    
+    public static boolean hasCeiling(String id)
+    {
+        for (TripWireBlockType data : values())
+        {
+            if (data.getId().equals(id) && data.getCeilingState() != null)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

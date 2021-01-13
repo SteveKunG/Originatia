@@ -4,12 +4,12 @@ import com.stevekung.originatia.utils.ISoundData;
 
 import net.minecraft.block.SoundType;
 
-public class TripWireBlockSoundData implements ISoundData
+public class TripWireBlockSoundType implements ISoundData
 {
     private final SoundType type;
     private final String state;
 
-    private TripWireBlockSoundData(SoundType type, String state)
+    private TripWireBlockSoundType(SoundType type, String state)
     {
         this.type = type;
         this.state = state;
@@ -26,13 +26,13 @@ public class TripWireBlockSoundData implements ISoundData
         return this.state;
     }
 
-    public static TripWireBlockSoundData create(SoundType type, String state)
+    public static TripWireBlockSoundType create(SoundType type, String state)
     {
-        return new TripWireBlockSoundData(type, state);
+        return new TripWireBlockSoundType(type, state);
     }
 
-    public static TripWireBlockSoundData create(SoundType type, TripWireBlockData data)
+    public static TripWireBlockSoundType create(SoundType type, TripWireBlockType blockType)
     {
-        return new TripWireBlockSoundData(type, data.getState());
+        return new TripWireBlockSoundType(type, blockType.getState());
     }
 }

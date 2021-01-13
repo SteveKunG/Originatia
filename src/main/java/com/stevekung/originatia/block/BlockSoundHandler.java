@@ -11,10 +11,10 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.stevekung.originatia.block.data.NoteBlockSoundData;
-import com.stevekung.originatia.block.data.SimpleBlockSoundData;
-import com.stevekung.originatia.block.data.TripWireBlockData;
-import com.stevekung.originatia.block.data.TripWireBlockSoundData;
+import com.stevekung.originatia.block.data.NoteBlockSoundType;
+import com.stevekung.originatia.block.data.SimpleBlockSoundType;
+import com.stevekung.originatia.block.data.TripWireBlockType;
+import com.stevekung.originatia.block.data.TripWireBlockSoundType;
 import com.stevekung.originatia.config.OriginRealmsConfig;
 import com.stevekung.originatia.utils.*;
 
@@ -35,75 +35,73 @@ public class BlockSoundHandler
     {
         //TODO 1.17 Crystal Sound
 
-        TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.CLOVER),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.MOSS),
-                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.MOSS.getCeilingState()),
-                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.SHELF_FUNGUS),
-                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.AUBRIETA_WHITE),
-                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.AUBRIETA_RED),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, TripWireBlockData.DEAD_LEAVES),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=true,south=false,west=false]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.BLUE_CRYSTAL),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.BLUE_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.PURPLE_CRYSTAL),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.PURPLE_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.RED_CRYSTAL),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.RED_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.GREEN_CRYSTAL),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.GREEN_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.YELLOW_CRYSTAL),
-                TripWireBlockSoundData.create(SoundType.GLASS, TripWireBlockData.YELLOW_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=true,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundData.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=false]"),
-                TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, TripWireBlockData.TOXIC_MUSHROOM),
-                TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, TripWireBlockData.TOXIC_MUSHROOM.getCeilingState()),
-                TripWireBlockSoundData.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]")
+        TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.CLOVER),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=true,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.MOSS),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.MOSS.getCeilingState()),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.SHELF_FUNGUS),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_WHITE),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_RED),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.DEAD_LEAVES),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=true,west=true]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=false,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=true,south=false,west=false]"),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.BLUE_CRYSTAL),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.BLUE_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.PURPLE_CRYSTAL),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.PURPLE_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.RED_CRYSTAL),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.RED_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.GREEN_CRYSTAL),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.GREEN_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundType.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.YELLOW_CRYSTAL),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.YELLOW_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundType.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=false,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.WHITE_CRYSTAL),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.WHITE_CRYSTAL.getCeilingState()),
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"),
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=false]"),
+                TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, TripWireBlockType.TOXIC_MUSHROOM),
+                TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, TripWireBlockType.TOXIC_MUSHROOM.getCeilingState()),
+                TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]")
                 ));
 
-        DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASS, 16, 18, 19, 20, 21, 22, 23, 24),
-                NoteBlockSoundData.create(SoundType.CORAL, NoteBlockInstrument.BASS, 17),
-                NoteBlockSoundData.create(SoundType.GROUND, NoteBlockInstrument.BASS, 15),
-                NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BELL, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24),
-                NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BASEDRUM, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12),
-                NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.CHIME, 8, 9, 10, 11, 12, 13),
-                NoteBlockSoundData.create(SoundType.GLASS, NoteBlockInstrument.CHIME, 1, 2, 3, 4, 5, 6, 7),
-                NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BIT, 1, 2, 3, 4, 5, 6, 7, 16, 17, 18, 19, 20, 21),
-                NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.BIT, 8, 9, 10, 11, 12, 13, 14, 15),
-                NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.COW_BELL, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 19, 20, 23, 24),
-                NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.DIDGERIDOO, 1, 2),
-                NoteBlockSoundData.create(SoundType.GLASS, NoteBlockInstrument.DIDGERIDOO, 5, 6, 7, 8, 9, 10, 15, 16, 17, 18, 19, 20, 21, 22),
-                NoteBlockSoundData.create(SoundType.GLASS, NoteBlockInstrument.FLUTE, 16, 19, 22),
-                NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.FLUTE, 3, 4, 5, 6, 7, 9, 15, 17, 18, 20, 21, 23, 24),
-                NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.GUITAR, 2, 3, 5, 6, 8, 19, 20, 21),
-                NoteBlockSoundData.create(SoundType.GLASS, NoteBlockInstrument.GUITAR, 1, 4, 7, 22),
-                NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.GUITAR, 12, 13, 14, 15, 16, 17, 18),
-                NoteBlockSoundData.create(SoundType.STONE, NoteBlockInstrument.BANJO, 4, 10),
-                NoteBlockSoundData.create(SoundType.METAL, NoteBlockInstrument.BANJO, 5, 6, 7, 11)
+        DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BASS, 15, 16, 18, 19, 20, 21, 22, 23, 24),
+                NoteBlockSoundType.create(SoundType.CORAL, NoteBlockInstrument.BASS, 17),
+                NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BELL, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24),
+                NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BASEDRUM, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12),
+                NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.CHIME, 8, 9, 10, 11, 12, 13),
+                NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.CHIME, 1, 2, 3, 4, 5, 6, 7),
+                NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BIT, 1, 2, 3, 4, 5, 6, 7, 16, 17, 18, 19, 20, 21),
+                NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.BIT, 8, 9, 10, 11, 12, 13, 14, 15),
+                NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.COW_BELL, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 19, 20, 23, 24),
+                NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.DIDGERIDOO, 1, 2),
+                NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.DIDGERIDOO, 5, 6, 7, 8, 9, 10, 15, 16, 17, 18, 19, 20, 21, 22),
+                NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.FLUTE, 16, 19, 22),
+                NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.FLUTE, 3, 4, 5, 6, 7, 9, 15, 17, 18, 20, 21, 23, 24),
+                NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.GUITAR, 2, 3, 5, 6, 8, 19, 20, 21),
+                NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.GUITAR, 1, 4, 7, 22),
+                NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.GUITAR, 12, 13, 14, 15, 16, 17, 18),
+                NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BANJO, 4, 10),
+                NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.BANJO, 5, 6, 7, 11)
                 ));
 
-        DATA.put(Blocks.PETRIFIED_OAK_SLAB, ImmutableList.of(SimpleBlockSoundData.create(SoundType.GROUND)));
         DATA.putAll(TRIPWIRE);
     }
 
@@ -117,9 +115,9 @@ public class BlockSoundHandler
             {
                 for (ISoundData data : tdatas)
                 {
-                    if (data instanceof TripWireBlockSoundData)
+                    if (data instanceof TripWireBlockSoundType)
                     {
-                        TripWireBlockSoundData tData = (TripWireBlockSoundData)data;
+                        TripWireBlockSoundType tData = (TripWireBlockSoundType)data;
 
                         try
                         {
@@ -150,23 +148,23 @@ public class BlockSoundHandler
         {
             for (ISoundData data : datas)
             {
-                if (data instanceof NoteBlockSoundData)
+                if (data instanceof NoteBlockSoundType)
                 {
-                    NoteBlockSoundData nData = (NoteBlockSoundData)data;
+                    NoteBlockSoundType nData = (NoteBlockSoundType)data;
 
-                    if (state.get(NoteBlock.INSTRUMENT) == nData.getInstrument() && Arrays.stream(nData.getNote()).anyMatch(note -> state.get(NoteBlock.NOTE) == note))
+                    if (state.get(NoteBlock.INSTRUMENT) == nData.getBlockType().getInstrument() && Arrays.stream(nData.getBlockType().getNote()).anyMatch(note -> state.get(NoteBlock.NOTE) == note))
                     {
                         return nData.getType();
                     }
                 }
-                else if (data instanceof SimpleBlockSoundData)
+                else if (data instanceof SimpleBlockSoundType)
                 {
-                    SimpleBlockSoundData sData = (SimpleBlockSoundData)data;
+                    SimpleBlockSoundType sData = (SimpleBlockSoundType)data;
                     return sData.getType();
                 }
-                else if (data instanceof TripWireBlockSoundData)
+                else if (data instanceof TripWireBlockSoundType)
                 {
-                    TripWireBlockSoundData tData = (TripWireBlockSoundData)data;
+                    TripWireBlockSoundType tData = (TripWireBlockSoundType)data;
 
                     try
                     {
