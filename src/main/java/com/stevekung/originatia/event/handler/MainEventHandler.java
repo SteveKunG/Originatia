@@ -114,7 +114,8 @@ public class MainEventHandler
         {
             if (gui instanceof InventoryScreen)
             {
-                this.addButtonsToInventory(event, width, height);
+                InventoryScreen invScreen = (InventoryScreen)gui;
+                this.addButtonsToInventory(event, width, height, invScreen.getRecipeGui().isVisible());
             }
         }
     }
@@ -221,8 +222,8 @@ public class MainEventHandler
         }
     }
 
-    private void addButtonsToInventory(GuiScreenEvent.InitGuiEvent.Post event, int width, int height)
+    private void addButtonsToInventory(GuiScreenEvent.InitGuiEvent.Post event, int width, int height, boolean recipeBook)
     {
-        event.addWidget(new ItemButton(width + 44, height + 86, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse")));
+        event.addWidget(new ItemButton(width + (recipeBook ? 120 : 44), height + 86, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse")));
     }
 }
