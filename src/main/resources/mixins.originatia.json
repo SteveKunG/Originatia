@@ -14,10 +14,7 @@
         "MixinNoteBlock",
         "MixinPlayerController",
         "MixinTripWireBlock",
-        "fixes.MixinFilterList",
-        "fixes.MixinResourceLocation",
-        "fixes.MixinScoreboard",
-        "fixes.MixinSocialInteractionsScreen"
+        "fixes.MixinResourceLocation"
     ],
     "injectors": {
         "defaultRequire": 1
