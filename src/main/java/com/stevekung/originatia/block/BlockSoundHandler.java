@@ -77,9 +77,11 @@ public class BlockSoundHandler
                 TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
                 TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
                 TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=false]"),
+                TripWireBlockSoundType.create(SoundType.GROUND, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=false]"),
                 TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, TripWireBlockType.TOXIC_MUSHROOM),
                 TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, TripWireBlockType.TOXIC_MUSHROOM.getCeilingState()),
-                TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]")
+                TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]"),
+                TripWireBlockSoundType.create(SoundType.BAMBOO_SAPLING, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=false,west=false]")
                 ));
 
         DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BASS, 15, 16, 18, 19, 20, 21, 22, 23, 24),
