@@ -5,7 +5,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.stevekung.originatia.block.LanternBlockLightHandler;
 import com.stevekung.originatia.utils.Utils;
 
 import net.minecraft.block.Block;
@@ -21,7 +20,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
@@ -67,11 +65,5 @@ public class MixinNoteBlock extends Block
                 info.setReturnValue(ActionResultType.PASS);
             }
         }
-    }
-
-    @Override
-    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos)
-    {
-        return LanternBlockLightHandler.getLightValue(state, world, pos);
     }
 }
