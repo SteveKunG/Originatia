@@ -101,7 +101,9 @@ public class BlockSoundHandler
                 NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.GUITAR, 1, 4, 7, 22),
                 NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.GUITAR, 12, 13, 14, 15, 16, 17, 18),
                 NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BANJO, 4, 10),
-                NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.BANJO, 5, 6, 7, 11)
+                NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.BANJO, 5, 6, 7, 11),
+                NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.HARP, 11, 12, 13),
+                NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.HARP, 14, 15, 16, 17, 18, 19)
                 ));
 
         DATA.putAll(TRIPWIRE);
