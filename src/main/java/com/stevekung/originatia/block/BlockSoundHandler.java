@@ -36,7 +36,7 @@ public class BlockSoundHandler
         //TODO 1.17 Crystal Sound
 
         TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"), // clover 2
                 TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.CLOVER),
                 TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_BLUE),
                 TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_PINK),
@@ -71,7 +71,7 @@ public class BlockSoundHandler
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.YELLOW_CRYSTAL.getCeilingState()),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.WHITE_CRYSTAL),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.WHITE_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"), // pebble 1
+                TripWireBlockSoundType.create(SoundType.BASALT, TripWireBlockType.PEBBLES_1),
                 TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"), // pebble 2
                 TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"), // pebble 3
                 TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"), // rock 1
