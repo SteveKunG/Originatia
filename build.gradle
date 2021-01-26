@@ -96,8 +96,12 @@ reobf {
 
 jar {
     manifest {
-        attributes("MixinConnector": "com.stevekung.originatia.core.OriginatiaMixinConnector"
-        )
+        attributes([
+            "MixinConnector": "com.stevekung.originatia.core.OriginatiaMixinConnector",
+            "Implementation-Title": "${archivesBaseName}",
+            "Implementation-Version": "${version}",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
     }
     baseName = "Originatia-" + mcVersion
 }
@@ -117,8 +121,12 @@ task deobfJar(type: Jar) {
         exclude "LICENSE.txt", "META-INF/*.txt", "META-INF/MANIFSET.MF", "META-INF/maven/**", "META-INF/*.RSA", "META-INF/*.SF"
     }
     manifest {
-        attributes("MixinConnector": "com.stevekung.originatia.core.OriginatiaMixinConnector"
-        )
+        attributes([
+            "MixinConnector": "com.stevekung.originatia.core.OriginatiaMixinConnector",
+            "Implementation-Title": "${archivesBaseName}",
+            "Implementation-Version": "${version}",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
     }
     baseName = "Originatia-" + mcVersion
     classifier = "deobf"
