@@ -35,27 +35,28 @@ public class BlockSoundHandler
     {
         //TODO 1.17 Crystal Sound
 
-        TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
+        TRIPWIRE.put(Blocks.TRIPWIRE, ImmutableList.of(
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=false,west=false]"),
                 TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.CLOVER),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=true,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_BLUE),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_PINK),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_WHITE),
+                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_RED),
                 TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.MOSS),
                 TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.MOSS.getCeilingState()),
                 TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.SHELF_FUNGUS),
-                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_WHITE),
-                TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.AUBRIETA_RED),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"), // water clover
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"), // white lotus
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"), // pink lotus
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"), // purple lotus
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"), // small lilypad
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"), // cattail 1
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=false]"), // cattail 2
                 TripWireBlockSoundType.create(SoundType.CROP, TripWireBlockType.DEAD_LEAVES),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=true,west=true]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=false,west=false]"),
-                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=true,south=false,west=false]"),
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=false,powered=false,south=true,west=true]"), // oak leaves
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=true]"), // spruce leaves
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=false,west=false]"), // grass sprouts
+                TripWireBlockSoundType.create(SoundType.CROP, "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=true,south=false,west=false]"), // large orange mycena
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.BLUE_CRYSTAL),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.BLUE_CRYSTAL.getCeilingState()),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.PURPLE_CRYSTAL),
@@ -64,27 +65,28 @@ public class BlockSoundHandler
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.RED_CRYSTAL.getCeilingState()),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.GREEN_CRYSTAL),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.GREEN_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundType.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=true]"),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.ORANGE_CRYSTAL),
+                TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.ORANGE_CRYSTAL.getCeilingState()),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.YELLOW_CRYSTAL),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.YELLOW_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundType.create(SoundType.GLASS, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=false,powered=false,south=false,west=true]"),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.WHITE_CRYSTAL),
                 TripWireBlockSoundType.create(SoundType.GLASS, TripWireBlockType.WHITE_CRYSTAL.getCeilingState()),
-                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"),
-                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"),
-                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"),
-                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
-                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=false]"),
-                TripWireBlockSoundType.create(SoundType.GROUND, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=false]"),
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=true]"), // pebble 1
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=false,west=true]"), // pebble 2
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=true]"), // pebble 3
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"), // rock 1
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=true,powered=false,south=true,west=false]"), // rock 2
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=true]"), // rock 3
+                TripWireBlockSoundType.create(SoundType.BASALT, "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=true,west=false]"), // cobblestone pebble
+                TripWireBlockSoundType.create(SoundType.GROUND, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=false]"), // ground
                 TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, TripWireBlockType.TOXIC_MUSHROOM),
                 TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, TripWireBlockType.TOXIC_MUSHROOM.getCeilingState()),
-                TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]"),
-                TripWireBlockSoundType.create(SoundType.BAMBOO_SAPLING, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=false,west=false]")
+                TripWireBlockSoundType.create(SoundType.NETHER_SPROUT, "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=true]"), // orange mycena
+                TripWireBlockSoundType.create(SoundType.BAMBOO_SAPLING, "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=false,west=false]") // hay cover
                 ));
 
-        DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BASS, 15, 16, 18, 19, 20, 21, 22, 23, 24),
+        DATA.put(Blocks.NOTE_BLOCK, ImmutableList.of(
+                NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BASS, 15, 16, 18, 19, 20, 21, 22, 23, 24),
                 NoteBlockSoundType.create(SoundType.CORAL, NoteBlockInstrument.BASS, 17),
                 NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BELL, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24),
                 NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BASEDRUM, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12),
@@ -100,10 +102,11 @@ public class BlockSoundHandler
                 NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.GUITAR, 2, 3, 5, 6, 8, 19, 20, 21),
                 NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.GUITAR, 1, 4, 7, 22),
                 NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.GUITAR, 12, 13, 14, 15, 16, 17, 18),
+                NoteBlockSoundType.create(SoundType.PLANT, NoteBlockInstrument.GUITAR, 23),
                 NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.BANJO, 4, 10),
                 NoteBlockSoundType.create(SoundType.METAL, NoteBlockInstrument.BANJO, 5, 6, 7, 11),
                 NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.HARP, 11, 12, 13),
-                NoteBlockSoundType.create(SoundType.GLASS, NoteBlockInstrument.HARP, 14, 15, 16, 17, 18, 19)
+                NoteBlockSoundType.create(SoundType.STONE, NoteBlockInstrument.HARP, 14, 15, 16, 17, 18, 19)
                 ));
 
         DATA.putAll(TRIPWIRE);

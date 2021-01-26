@@ -12,6 +12,8 @@ public enum TripWireBlockType
     CLOVER("clover", "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"),
     AUBRIETA_WHITE("white_aubrieta", "minecraft:tripwire[attached=false,disarmed=false,east=true,north=true,powered=false,south=false,west=false]"),
     AUBRIETA_RED("red_aubrieta", "minecraft:tripwire[attached=false,disarmed=false,east=true,north=false,powered=false,south=false,west=false]"),
+    AUBRIETA_BLUE("blue_aubrieta", "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=false,west=true]"),
+    AUBRIETA_PINK("pink_aubrieta", "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=false,south=true,west=false]"),
     SHELF_FUNGUS("shelf_fungus", "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=false,south=false,west=false]"),
     DEAD_LEAVES("dead_leaves", "minecraft:tripwire[attached=true,disarmed=false,east=false,north=true,powered=false,south=true,west=false]"),
     MOSS("moss", "minecraft:tripwire[attached=true,disarmed=true,east=false,north=false,powered=false,south=false,west=false]", "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=true,west=false]"),
@@ -23,6 +25,7 @@ public enum TripWireBlockType
     PURPLE_CRYSTAL("purple_crystal", "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=false,west=true]", "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=true,west=true]"),
     RED_CRYSTAL("red_crystal", "minecraft:tripwire[attached=false,disarmed=true,east=true,north=true,powered=false,south=true,west=false]", "minecraft:tripwire[attached=false,disarmed=true,east=false,north=false,powered=false,south=false,west=true]"),
     WHITE_CRYSTAL("white_crystal", "minecraft:tripwire[attached=false,disarmed=false,east=false,north=false,powered=true,south=true,west=true]", "minecraft:tripwire[attached=false,disarmed=false,east=false,north=true,powered=true,south=true,west=true]"),
+    ORANGE_CRYSTAL("orange_crystal", "minecraft:tripwire[attached=false,disarmed=true,east=false,north=true,powered=false,south=false,west=true]", "minecraft:tripwire[attached=false,disarmed=true,east=true,north=false,powered=false,south=false,west=true]"),
 
     ROCK_1("rock_1", "minecraft:tripwire[attached=true,disarmed=false,east=true,north=false,powered=false,south=false,west=true]"),
 
