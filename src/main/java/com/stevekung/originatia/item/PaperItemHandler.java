@@ -95,7 +95,7 @@ public class PaperItemHandler
     {
         ItemStack itemStack = context.getItem();
         String id = itemStack.getTag().getString("CustomBlock");
-        BlockState blockstate = TripWireBlockType.hasCeiling(id) && context.getFace() == Direction.DOWN ? TripWireBlockType.getCeilingBlockStateById(id) : TripWireBlockType.getBlockStateById(id);
+        BlockState blockstate = TripWireBlockType.hasCeiling(id) && context.getNearestLookingDirection().getOpposite() == Direction.DOWN ? TripWireBlockType.getCeilingBlockStateById(id) : TripWireBlockType.getBlockStateById(id);
         return blockstate != null && this.canPlace(context, blockstate) ? blockstate : null;
     }
 
