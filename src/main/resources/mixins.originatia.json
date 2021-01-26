@@ -1,5 +1,6 @@
 {
     "required": true,
+    "verbose": true,
     "minVersion": "0.8.2",
     "compatibilityLevel": "JAVA_8",
     "package": "com.stevekung.originatia.mixin",
@@ -7,13 +8,12 @@
     "target": "@env(DEFAULT)",
     "mixins": [],
     "client": [
-        "IMixinItem",
-        "MixinBlock",
-        "MixinEntity",
-        "MixinItem",
-        "MixinNoteBlock",
-        "MixinPlayerController",
-        "MixinTripWireBlock",
+        "block.MixinBlock",
+        "block.MixinNoteBlock",
+        "block.MixinTripWireBlock",
+        "client.multiplayer.MixinPlayerController",
+        "entity.MixinEntity",
+        "item.MixinItem",
         "fixes.MixinResourceLocation"
     ],
     "injectors": {

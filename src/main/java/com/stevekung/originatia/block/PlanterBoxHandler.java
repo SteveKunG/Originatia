@@ -4,7 +4,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.stevekung.originatia.config.OriginRealmsConfig;
-import com.stevekung.originatia.mixin.IMixinItem;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -15,6 +14,7 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemFrameEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.properties.NoteBlockInstrument;
@@ -71,7 +71,7 @@ public class PlanterBoxHandler
 
     public static void processRightClick(PlayerEntity player, World world, Hand hand, CallbackInfoReturnable<ActionResultType> info)
     {
-        BlockRayTraceResult result = IMixinItem.invokeRayTrace(world, player, RayTraceContext.FluidMode.NONE);
+        BlockRayTraceResult result = Item.rayTrace(world, player, RayTraceContext.FluidMode.NONE);
         ItemStack itemStack = player.getHeldItem(hand);
         BlockState state = world.getBlockState(result.getPos());
 

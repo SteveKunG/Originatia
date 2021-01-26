@@ -1,4 +1,4 @@
-package com.stevekung.originatia.mixin;
+package com.stevekung.originatia.mixin.block;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.stevekung.originatia.utils.Utils;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.NoteBlock;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,19 +23,14 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
 @Mixin(NoteBlock.class)
-public class MixinNoteBlock extends Block
+public class MixinNoteBlock
 {
-    private MixinNoteBlock()
-    {
-        super(null);
-    }
-
     @Inject(method = "getStateForPlacement(Lnet/minecraft/item/BlockItemUseContext;)Lnet/minecraft/block/BlockState;", cancellable = true, at = @At("HEAD"))
     private void getStateForPlacement(BlockItemUseContext context, CallbackInfoReturnable<BlockState> info)
     {
         if (Utils.INSTANCE.isOriginRealms())
         {
-            info.setReturnValue(this.getDefaultState());
+            info.setReturnValue(((NoteBlock)(Object)this).getDefaultState());
         }
     }
 

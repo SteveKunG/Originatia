@@ -1,4 +1,4 @@
-package com.stevekung.originatia.mixin;
+package com.stevekung.originatia.mixin.entity;
 
 import javax.annotation.Nullable;
 

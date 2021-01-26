@@ -1,4 +1,4 @@
-package com.stevekung.originatia.mixin;
+package com.stevekung.originatia.mixin.item;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
