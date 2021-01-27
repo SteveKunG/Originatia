@@ -9,6 +9,7 @@ import org.lwjgl.glfw.GLFW;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.stevekung.originatia.gui.screen.OriginRealmsChatScreen;
+import com.stevekung.originatia.gui.screen.WarpSelectionScreen;
 import com.stevekung.originatia.gui.screen.widget.ItemButton;
 import com.stevekung.originatia.keybinding.KeyBindingHandler;
 import com.stevekung.originatia.utils.ItemUtilsOR;
@@ -27,6 +28,7 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.util.InputMappings;
 import net.minecraft.command.arguments.BlockStateParser;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemFrameEntity;
@@ -164,9 +166,16 @@ public class MainEventHandler
     @SubscribeEvent
     public void onPressKey(InputEvent.KeyInputEvent event)
     {
-        if (KeyBindingHandler.KEY_QUICK_NAVIGATOR.isKeyDown())
+        if (InputMappings.isKeyDown(this.mc.getMainWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL) && KeyBindingHandler.KEY_QUICK_NAVIGATOR.isKeyDown())
         {
-            this.mc.player.sendChatMessage("/navigator");
+            this.mc.displayGuiScreen(new WarpSelectionScreen());
+        }
+        else
+        {
+            if (KeyBindingHandler.KEY_QUICK_NAVIGATOR.isKeyDown())
+            {
+                this.mc.player.sendChatMessage("/navigator");
+            }
         }
     }
 

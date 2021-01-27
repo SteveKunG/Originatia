@@ -34,7 +34,7 @@ public class OriginatiaMod
     private void phaseOne(FMLCommonSetupEvent event)
     {
         CommonUtils.registerEventHandler(new MainEventHandler());
-        CommonUtils.registerEventHandler(new OriginRealmsChatScreen());
+        //CommonUtils.registerEventHandler(new OriginRealmsChatScreen());TODO
         KeyBindingHandler.init();
     }
 
