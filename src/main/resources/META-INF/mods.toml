@@ -6,9 +6,9 @@ license="MIT License"
 
 [[mods]]
 modId="originatia"
-version="0.0.2"
+version="${file.jarVersion}"
 displayName="Originatia"
-description="Useful Origin Realms features, QOL and In-game API Viewer (soon!)"
+description="Improves Origin Realms gameplay, Block Sounds fixes and more!"
 credits=""
 displayURL="https://www.curseforge.com/minecraft/mc-mods/originatia"
 authors="SteveKunG"
@@ -31,13 +31,13 @@ logoFile="logo.png"
 [[dependencies.originatia]]
     modId="stevekungs_lib"
     mandatory=true
-    versionRange="[4.0.0,)"
+    versionRange="[4.0.2,)"
     ordering="NONE"
     side="CLIENT"
 
 [[dependencies.originatia]]
     modId="indicatia"
     mandatory=false
-    versionRange="[4.0.0,)"
+    versionRange="[4.0.2,)"
     ordering="NONE"
     side="CLIENT"
