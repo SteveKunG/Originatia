@@ -15,7 +15,6 @@ public class OriginRealmsConfig
     {
         // General
         public final ForgeConfigSpec.BooleanValue enableFixBlockSounds;
-        public final ForgeConfigSpec.BooleanValue safeRemovePlanterBox;
         public final ForgeConfigSpec.BooleanValue enableORDropdownShortcut;
         public final ForgeConfigSpec.IntValue selectedShortcutTab;
         public final ForgeConfigSpec.IntValue tabScrollPos;
@@ -29,11 +28,6 @@ public class OriginRealmsConfig
                     .translation("originatia.configgui.enable_fix_block_sounds")
                     .comment("Most blocks in Origin Realms uses Note Block for custom blocks, Enable this will apply correct block sound to it")
                     .define("enableFixBlockSounds", true);
-
-            this.safeRemovePlanterBox = builder
-                    .translation("originatia.configgui.safe_remove_planter_box")
-                    .comment("Safely remove Planter Box by using bare hand and sneaking")
-                    .define("safeRemovePlanterBox", true);
 
             this.enableORDropdownShortcut = builder
                     .translation("originatia.configgui.enable_or_dropdown_shortcut")
