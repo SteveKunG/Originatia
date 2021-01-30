@@ -32,7 +32,7 @@ public class WarpSelectionScreen extends Screen
     private static final ResourceLocation TEXTURE = new ResourceLocation(OriginatiaMod.MOD_ID, "textures/gui/warp_selection.png");
     private static final int WIDTH = WarpSelectionScreen.Mode.values().length * 30 - 5;
     private static final ITextComponent SELECT_KEY = new TranslationTextComponent("debug.gamemodes.select_next");
-    private WarpSelectionScreen.Mode warp = WarpSelectionScreen.Mode.SPAWN;
+    private WarpSelectionScreen.Mode warp = WarpSelectionScreen.Mode.CLOSE;
     private int lastMouseX;
     private int lastMouseY;
     private boolean mouseUsedForSelection;
@@ -95,14 +95,9 @@ public class WarpSelectionScreen extends Screen
 
     private void sendMessage()
     {
-        sendMessage(this.minecraft, this.warp);
-    }
-
-    private static void sendMessage(Minecraft mc, WarpSelectionScreen.Mode mode)
-    {
-        if (mc.playerController != null && mc.player != null)
+        if (this.minecraft.player != null && this.warp != WarpSelectionScreen.Mode.CLOSE)
         {
-            mc.player.sendChatMessage(mode.getCommand());
+            this.minecraft.player.sendChatMessage(this.warp.getCommand());
         }
     }
 
@@ -149,7 +144,8 @@ public class WarpSelectionScreen extends Screen
         GREEN_BALLOON(LangUtils.translate("warp_mode.green_balloon"), "/balloon green-balloon", ItemUtils.getSkullItemStack("f43e4b11-3e51-4daf-b800-d35fa32bdac3", "a26ec7cd3b6ae249997137c1b94867c66e97499da071bf50adfd37034132fa03")),
         BLUE_BALLOON(LangUtils.translate("warp_mode.blue_balloon"), "/balloon blue-balloon", ItemUtils.getSkullItemStack("8cf45dd8-3421-4841-97b9-71d986a77b25", "f868e6a5c4a445d60a3050b5bec1d37af1b25943745d2d479800c8436488065a")),
         YELLOW_BALLOON(LangUtils.translate("warp_mode.yellow_balloon"), "/balloon yellow-balloon", ItemUtils.getSkullItemStack("574beff9-8720-4157-a5c8-7482d5654432", "a7f381a20a9c640428077070cc7bd95d688592d1104ccbcd713649a49e41ebfb")),
-        NAVIGATOR(LangUtils.translate("warp_mode.navigator"), "/navigator", new ItemStack(Items.MAP));
+        NAVIGATOR(LangUtils.translate("warp_mode.navigator"), "/navigator", new ItemStack(Items.MAP)),
+        CLOSE(LangUtils.translate("warp_mode.close"), "", new ItemStack(Items.BARRIER));
 
         protected static final WarpSelectionScreen.Mode[] VALUES = values();
         final ITextComponent displayName;
@@ -195,9 +191,10 @@ public class WarpSelectionScreen extends Screen
             case YELLOW_BALLOON:
                 return NAVIGATOR;
             case NAVIGATOR:
+            case CLOSE:
                 return YOUR_REALMS;
             default:
-                return SPAWN;
+                return CLOSE;
             }
         }
     }

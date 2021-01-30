@@ -9,6 +9,7 @@
     "warp_mode.blue_balloon": "Blue Balloon",
     "warp_mode.yellow_balloon": "Yellow Balloon",
     "warp_mode.navigator": "Navigator...",
+    "warp_mode.close": "Close",
     "warp_mode.press_key": "[ %s ]",
 
     "key.categories.originatia": "Originatia",

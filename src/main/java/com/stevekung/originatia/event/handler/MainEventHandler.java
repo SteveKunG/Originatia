@@ -8,15 +8,12 @@ import java.util.stream.Collectors;
 import org.lwjgl.glfw.GLFW;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.stevekung.originatia.gui.screen.OriginRealmsChatScreen;
 import com.stevekung.originatia.gui.screen.WarpSelectionScreen;
 import com.stevekung.originatia.gui.screen.widget.ItemButton;
 import com.stevekung.originatia.keybinding.KeyBindingHandler;
 import com.stevekung.originatia.utils.ItemUtilsOR;
 import com.stevekung.originatia.utils.Utils;
-import com.stevekung.stevekungslib.utils.CommonUtils;
 import com.stevekung.stevekungslib.utils.GameProfileUtils;
-import com.stevekung.stevekungslib.utils.ItemUtils;
 import com.stevekung.stevekungslib.utils.TextComponentUtils;
 import com.stevekung.stevekungslib.utils.client.ClientUtils;
 
@@ -218,7 +215,6 @@ public class MainEventHandler
         if (Utils.INSTANCE.isOriginRealms())
         {
             RenderTypeLookup.setRenderLayer(Blocks.TRIPWIRE, RenderType.getCutout());
-            CommonUtils.runAsync(() -> OriginRealmsChatScreen.selfItemCache = ItemUtils.getPlayerHead(GameProfileUtils.getUsername()));
         }
     }
 
