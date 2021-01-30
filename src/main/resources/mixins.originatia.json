@@ -14,6 +14,7 @@
         "entity.MixinEntity",
         "item.MixinItem",
         "multiplayer.MixinPlayerController",
+        "screen.inventory.MixinInventoryScreen",
         "fixes.MixinResourceLocation"
     ],
     "injectors": {

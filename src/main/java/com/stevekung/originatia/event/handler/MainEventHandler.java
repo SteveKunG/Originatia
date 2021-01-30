@@ -54,6 +54,7 @@ public class MainEventHandler
     private final Minecraft mc;
 
     public static boolean playStoneSound;
+    public static ItemButton itemButton;
 
     public MainEventHandler()
     {
@@ -229,6 +230,10 @@ public class MainEventHandler
 
     private void addButtonsToInventory(GuiScreenEvent.InitGuiEvent.Post event, int width, int height, boolean recipeBook)
     {
-        event.addWidget(new ItemButton(width + (recipeBook ? 120 : 44), height + 86, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse")));
+        if (itemButton == null)
+        {
+            itemButton = new ItemButton(width + (recipeBook ? 120 : 44), height + 84, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse"));
+        }
+        event.addWidget(itemButton);
     }
 }
