@@ -1,4 +1,4 @@
-package com.stevekung.originatia.mixin.client.multiplayer;
+package com.stevekung.originatia.mixin.multiplayer;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

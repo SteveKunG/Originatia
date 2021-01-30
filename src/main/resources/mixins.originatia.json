@@ -11,9 +11,9 @@
         "block.MixinBlock",
         "block.MixinNoteBlock",
         "block.MixinTripWireBlock",
-        "client.multiplayer.MixinPlayerController",
         "entity.MixinEntity",
         "item.MixinItem",
+        "multiplayer.MixinPlayerController",
         "fixes.MixinResourceLocation"
     ],
     "injectors": {
