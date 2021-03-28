@@ -211,7 +211,7 @@ public class WarpSelectionScreen extends Screen
         }
 
         @Override
-        public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
+        public void renderWidget(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
         {
             Minecraft minecraft = Minecraft.getInstance();
             this.renderUnselected(matrixStack, minecraft.getTextureManager());
