@@ -26,13 +26,13 @@ public class MixinEntity
         return BlockSoundHandler.getStepSound(state, world, pos, entity);
     }
 
-    @Redirect(method = "playStepSound(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V", at = @At(value = "INVOKE", target = "net/minecraft/block/BlockState.isIn(Lnet/minecraft/block/Block;)Z"))
+    @Redirect(method = "playStepSound(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V", at = @At(value = "INVOKE", target = "net/minecraft/block/BlockState.matchesBlock(Lnet/minecraft/block/Block;)Z"))
     private boolean isInBlock(BlockState state, Block block)
     {
         if (Utils.INSTANCE.isOriginRealms())
         {
-            return state.isIn(Blocks.TRIPWIRE);
+            return state.matchesBlock(Blocks.TRIPWIRE);
         }
-        return state.isIn(block);
+        return state.matchesBlock(block);
     }
 }

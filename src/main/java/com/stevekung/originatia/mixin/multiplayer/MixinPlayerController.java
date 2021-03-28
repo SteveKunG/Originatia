@@ -19,6 +19,6 @@ public class MixinPlayerController
     @Inject(method = "processRightClick", cancellable = true, at = @At("HEAD"))
     private void processRightClick(PlayerEntity player, World world, Hand hand, CallbackInfoReturnable<ActionResultType> info)
     {
-        PlanterBoxHandler.processRightClick(player, world, hand, info);
+        info.setReturnValue(PlanterBoxHandler.processRightClick(player, world, hand));
     }
 }

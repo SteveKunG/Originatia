@@ -69,7 +69,7 @@ public class WarpSelectionScreen extends Screen
             matrixStack.pop();
             super.render(matrixStack, mouseX, mouseY, partialTicks);
             drawCenteredString(matrixStack, this.font, this.warp.getDisplayName(), this.width / 2, this.height / 2 - 30 - 20, -1);
-            drawCenteredString(matrixStack, this.font, new TranslationTextComponent("warp_mode.press_key", KeyBindingHandler.KEY_QUICK_NAVIGATOR.getKey().func_237520_d_()).mergeStyle(TextFormatting.AQUA).append(SELECT_KEY), this.width / 2, this.height / 2 + 5, 16777215);
+            drawCenteredString(matrixStack, this.font, new TranslationTextComponent("warp_mode.press_key", KeyBindingHandler.KEY_QUICK_NAVIGATOR.getKey().func_237520_d_()).mergeStyle(TextFormatting.AQUA).appendSibling(SELECT_KEY), this.width / 2, this.height / 2 + 5, 16777215);
 
             if (!this.mouseUsedForSelection)
             {
@@ -211,7 +211,7 @@ public class WarpSelectionScreen extends Screen
         }
 
         @Override
-        public void renderButton(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
+        public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
         {
             Minecraft minecraft = Minecraft.getInstance();
             this.renderUnselected(matrixStack, minecraft.getTextureManager());

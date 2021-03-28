@@ -1,7 +1,5 @@
 package com.stevekung.originatia.block;
 
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NoteBlock;
@@ -19,7 +17,7 @@ import net.minecraft.world.World;
 
 public class PlanterBoxHandler
 {
-    public static void processRightClick(PlayerEntity player, World world, Hand hand, CallbackInfoReturnable<ActionResultType> info)
+    public static ActionResultType processRightClick(PlayerEntity player, World world, Hand hand)
     {
         BlockRayTraceResult result = Item.rayTrace(world, player, RayTraceContext.FluidMode.NONE);
         ItemStack itemStack = player.getHeldItem(hand);
@@ -27,7 +25,8 @@ public class PlanterBoxHandler
 
         if (itemStack.getItem() == Items.WATER_BUCKET && result.getFace() == Direction.UP && state.getBlock() == Blocks.NOTE_BLOCK && state.get(NoteBlock.INSTRUMENT) == NoteBlockInstrument.BANJO && state.get(NoteBlock.NOTE) == 12)
         {
-            info.setReturnValue(ActionResultType.FAIL);
+            return ActionResultType.FAIL;
         }
+        return ActionResultType.PASS;
     }
 }
