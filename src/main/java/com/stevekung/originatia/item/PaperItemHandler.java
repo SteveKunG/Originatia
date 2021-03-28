@@ -2,8 +2,6 @@ package com.stevekung.originatia.item;
 
 import javax.annotation.Nullable;
 
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
 import com.stevekung.originatia.block.data.TripWireBlockType;
 import com.stevekung.originatia.event.handler.MainEventHandler;
 
@@ -29,14 +27,15 @@ public class PaperItemHandler
 {
     public static final PaperItemHandler INSTANCE = new PaperItemHandler();
 
-    public void onItemUse(ItemUseContext context, CallbackInfoReturnable<ActionResultType> info)
+    public ActionResultType onItemUse(ItemUseContext context)
     {
         ItemStack itemStack = context.getItem();
 
         if (itemStack.getItem() == Items.PAPER && itemStack.hasTag() && itemStack.getTag().contains("CustomBlock"))
         {
-            info.setReturnValue(this.tryPlace(new BlockItemUseContext(context)));
+            return this.tryPlace(new BlockItemUseContext(context));
         }
+        return ActionResultType.PASS;
     }
 
     private ActionResultType tryPlace(BlockItemUseContext context)

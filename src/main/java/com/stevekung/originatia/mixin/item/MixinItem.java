@@ -17,6 +17,6 @@ public class MixinItem
     @Inject(method = "onItemUse(Lnet/minecraft/item/ItemUseContext;)Lnet/minecraft/util/ActionResultType;", cancellable = true, at = @At("HEAD"))
     private void onItemUse(ItemUseContext context, CallbackInfoReturnable<ActionResultType> info)
     {
-        PaperItemHandler.INSTANCE.onItemUse(context, info);
+        info.setReturnValue(PaperItemHandler.INSTANCE.onItemUse(context));
     }
 }

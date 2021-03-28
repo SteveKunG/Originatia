@@ -15,6 +15,7 @@ public class OriginRealmsConfig
     {
         // General
         public final ForgeConfigSpec.BooleanValue enableFixBlockSounds;
+        public final ForgeConfigSpec.BooleanValue enableCustomBlockShape;
 
         General(ForgeConfigSpec.Builder builder)
         {
@@ -25,6 +26,10 @@ public class OriginRealmsConfig
                     .translation("originatia.configgui.enable_fix_block_sounds")
                     .comment("Most blocks in Origin Realms uses Note Block for custom blocks, Enable this will apply correct block sound to it")
                     .define("enableFixBlockSounds", true);
+            this.enableCustomBlockShape = builder
+                    .translation("originatia.configgui.enable_custom_block_shape")
+                    .comment("Enable this will change current tripwire block shape to it own correct shape")
+                    .define("enableCustomBlockShape", true);
 
             builder.pop();
         }

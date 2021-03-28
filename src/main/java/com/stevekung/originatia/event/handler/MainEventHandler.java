@@ -1,8 +1,6 @@
 package com.stevekung.originatia.event.handler;
 
 import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 import org.lwjgl.glfw.GLFW;
@@ -31,21 +29,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ItemFrameEntity;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.text.ChatType;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.gui.GuiUtils;
 
@@ -140,28 +130,6 @@ public class MainEventHandler
     }
 
     @SubscribeEvent
-    public void onClientChatReceived(ClientChatReceivedEvent event)
-    {
-        ITextComponent component = event.getMessage();
-
-        if (event.getType() == ChatType.SYSTEM)//TODO Config
-        {
-            String message = TextFormatting.getTextWithoutFormattingCodes(component.getString());
-
-            if (false && message.toLowerCase(Locale.ROOT).contains("gg"))
-            {
-                event.setCanceled(true);
-            }
-            //System.out.println(StringEscapeUtils.escapeJava(TextFormatting.getTextWithoutFormattingCodes(component.getString())));
-
-            if (message.startsWith("ꑠ§x"))
-            {
-                this.mc.world.playSound(this.mc.player, this.mc.player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
-            }
-        }
-    }
-
-    @SubscribeEvent
     public void onPressKey(InputEvent.KeyInputEvent event)
     {
         if (InputMappings.isKeyDown(this.mc.getMainWindow().getHandle(), GLFW.GLFW_KEY_LEFT_CONTROL) && KeyBindingHandler.KEY_QUICK_NAVIGATOR.isKeyDown())
@@ -188,29 +156,6 @@ public class MainEventHandler
     }
 
     @SubscribeEvent
-    public void onItemTooltip(ItemTooltipEvent event)
-    {
-        List<ITextComponent> tooltips = event.getToolTip();
-        ItemStack itemStack = event.getItemStack();
-
-        try
-        {
-            if (itemStack.getItem() == Items.PAPER && itemStack.hasTag() && itemStack.getTag().contains("CustomBlock"))
-            {
-                int insertAt = tooltips.size();
-
-                if (this.mc.gameSettings.advancedItemTooltips)
-                {
-                    insertAt -= 2; // item name + nbt
-                }
-
-                tooltips.add(insertAt, TextComponentUtils.formatted("originrealms:" + itemStack.getTag().getString("CustomBlock"), TextFormatting.DARK_GRAY));
-            }
-        }
-        catch (Exception e) {}
-    }
-
-    @SubscribeEvent
     public void onClientLoggedIn(ClientPlayerNetworkEvent.LoggedInEvent event)
     {
         if (Utils.INSTANCE.isOriginRealms())
@@ -230,10 +175,6 @@ public class MainEventHandler
 
     private void addButtonsToInventory(GuiScreenEvent.InitGuiEvent.Post event, int width, int height, boolean recipeBook)
     {
-        if (itemButton == null)
-        {
-            itemButton = new ItemButton(width + (recipeBook ? 120 : 44), height + 84, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse"));
-        }
-        event.addWidget(itemButton);
+        event.addWidget(itemButton = new ItemButton(width + (recipeBook ? 120 : 44), height + 84, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> this.mc.player.sendChatMessage("/auctionhouse")));
     }
 }
