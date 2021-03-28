@@ -14,7 +14,6 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.Items;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
@@ -31,7 +30,7 @@ public class PaperItemHandler
     {
         ItemStack itemStack = context.getItem();
 
-        if (itemStack.getItem() == Items.PAPER && itemStack.hasTag() && itemStack.getTag().contains("CustomBlock"))
+        if (itemStack.hasTag() && itemStack.getTag().contains("CustomBlock"))
         {
             return this.tryPlace(new BlockItemUseContext(context));
         }
