@@ -1,0 +1,44 @@
+{
+    "schemaVersion": 1,
+    "id": "originatia",
+    "version": "${version}",
+    "name": "Originatia",
+    "description": "A small mod that improves Origin Realms gameplay, Block Sounds fixes and more!",
+    "authors": [
+        "SteveKunG"
+    ],
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/originatia",
+        "sources": "https://github.com/SteveKunG/Originatia",
+        "issues": "https://github.com/SteveKunG/Originatia/issues"
+    },
+    "license": "MIT License",
+    "icon": "logo.png",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "com.stevekung.originatia.core.OriginatiaFabricMod"
+        ],
+        "modmenu": [
+            "com.stevekung.originatia.modmenu.ModMenuIntegrationOR"
+        ]
+    },
+    "depends": {
+        "fabricloader": ">=0.11",
+        "fabric": "*",
+        "minecraft": ">=1.16.4",
+        "stevekungs_lib": ">=4.1.1",
+        "architectury": ">=1.8.131"
+    },
+    "mixins": [
+        "mixins.originatia.json",
+        "mixins.originatia_fabric.json"
+    ],
+    "custom": {
+        "modmenu": {
+            "links": {
+                "modmenu.discord": "https://discord.gg/6JhEjeY"
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "required": true,
+    "minVersion": "0.8.2",
+    "compatibilityLevel": "JAVA_8",
+    "package": "com.stevekung.originatia.mixin",
+    "client": [
+        "AccessorScreen",
+        "InvokerItem",
+        "fixes.MixinResourceLocation",
+        "gui.screens.inventory.MixinInventoryScreen",
+        "multiplayer.MixinMultiPlayerGameMode",
+        "world.item.MixinItem",
+        "world.level.block.MixinNoteBlock",
+        "world.level.block.MixinTripWireBlock"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "required": true,
+    "minVersion": "0.8.2",
+    "compatibilityLevel": "JAVA_8",
+    "package": "com.stevekung.originatia.mixin",
+    "client": [
+        "world.entity.MixinEntity",
+        "world.level.block.MixinBlock"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

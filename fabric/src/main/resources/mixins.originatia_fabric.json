@@ -1,0 +1,16 @@
+{
+    "required": true,
+    "minVersion": "0.8.2",
+    "compatibilityLevel": "JAVA_8",
+    "package": "com.stevekung.originatia.mixin",
+    "client": [
+        "multiplayer.MixinMultiPlayerGameMode",
+        "renderer.MixinLevelRenderer",
+        "world.entity.MixinEntity",
+        "world.level.block.MixinBlock",
+        "world.level.block.state.MixinBlockState"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}
