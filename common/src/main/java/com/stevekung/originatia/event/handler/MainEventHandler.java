@@ -64,7 +64,7 @@ public class MainEventHandler
             if (screen instanceof InventoryScreen)
             {
                 InventoryScreen invScreen = (InventoryScreen)screen;
-                this.addButtonsToInventory(widgets, width, height, invScreen.getRecipeBookComponent().isVisible());
+                this.addButtonsToInventory(invScreen, width, height, invScreen.getRecipeBookComponent().isVisible());
             }
         }
     }
@@ -85,8 +85,8 @@ public class MainEventHandler
         }
     }
 
-    private void addButtonsToInventory(List<AbstractWidget> widgets, int width, int height, boolean recipeBook)
+    private void addButtonsToInventory(InventoryScreen screen, int width, int height, boolean recipeBook)
     {
-        widgets.add(itemButton = new ItemButton(width + (recipeBook ? 120 : 44), height + 84, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> Minecraft.getInstance().player.chat("/auctionhouse")));
+        ((AccessorScreen)screen).invokeAddButton(itemButton = new ItemButton(width + (recipeBook ? 120 : 44), height + 84, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> Minecraft.getInstance().player.chat("/auctionhouse")));
     }
 }
