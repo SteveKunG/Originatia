@@ -72,6 +72,11 @@ public class MainEventHandler
     @SuppressWarnings("deprecation")
     public void onPostGuiDrawScreen(Screen screen, PoseStack poseStack, int mouseX, int mouseY, float delta)
     {
+        if (screen == null)
+        {
+            return;
+        }
+
         for (ItemButton button : ((AccessorScreen)screen).getButtons().stream().filter(button -> button instanceof ItemButton).map(button -> (ItemButton)button).collect(Collectors.toList()))
         {
             boolean hover = mouseX >= button.x && mouseY >= button.y && mouseX < button.x + button.getWidth() && mouseY < button.y + button.getHeight();
