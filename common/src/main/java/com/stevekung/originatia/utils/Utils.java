@@ -25,7 +25,7 @@ public class Utils
     public boolean isOriginRealms()
     {
         ServerData server = this.mc.getCurrentServer();
-        return server != null && server.ip.contains("play.originrealms.com");
+        return server != null && server.ip.contains("originrealms");
     }
 
     public Collection<String> filteredPlayers(Collection<String> collection)
