@@ -4,7 +4,6 @@
     "compatibilityLevel": "JAVA_8",
     "package": "com.stevekung.originatia.mixin",
     "client": [
-        "AccessorScreen",
         "InvokerItem",
         "fixes.MixinResourceLocation",
         "gui.screens.inventory.MixinInventoryScreen",

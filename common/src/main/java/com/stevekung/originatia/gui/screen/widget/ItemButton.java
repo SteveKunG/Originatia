@@ -15,9 +15,9 @@ import net.minecraft.world.level.ItemLike;
 public class ItemButton extends Button
 {
     private static final ResourceLocation TEXTURE = new ResourceLocation("originatia:textures/gui/blank.png");
-    private ItemStack itemStack;
+    private final ItemStack itemStack;
     private final Minecraft mc;
-    private Component customName;
+    private final Component customName;
 
     public ItemButton(int xPos, int yPos, ItemLike item, Button.OnPress onPress)
     {
@@ -64,20 +64,5 @@ public class ItemButton extends Button
     public Component getName()
     {
         return this.customName;
-    }
-
-    public void setName(Component name)
-    {
-        this.customName = name;
-    }
-
-    public ItemStack getItemStack()
-    {
-        return this.itemStack;
-    }
-
-    public void setItemStack(ItemStack itemStack)
-    {
-        this.itemStack = itemStack;
     }
 }

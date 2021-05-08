@@ -16,6 +16,6 @@ public abstract class MixinBlock implements IBlockSoundType
     @Override
     public SoundType getBlockSoundType(BlockState state, LevelReader reader, BlockPos pos, Entity entity)
     {
-        return BlockSoundHandler.getBlockSound(state, reader, pos, entity, this.getBlock());
+        return BlockSoundHandler.getBlockSound(state, this.getBlock());
     }
 }

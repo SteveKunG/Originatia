@@ -53,7 +53,7 @@ public class MixinTripWireBlock
     {
         if (Utils.INSTANCE.isOriginRealms() && PlatformConfig.getCustomBlockShape())
         {
-            info.setReturnValue(BlockShapeHandler.getShape(state, world, pos, context, state.getValue(TripWireBlock.ATTACHED) ? AABB : NOT_ATTACHED_AABB));
+            info.setReturnValue(BlockShapeHandler.getShape(state, state.getValue(TripWireBlock.ATTACHED) ? AABB : NOT_ATTACHED_AABB));
         }
     }
 }

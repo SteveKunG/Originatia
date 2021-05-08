@@ -16,6 +16,6 @@ public abstract class MixinBlock implements IForgeBlock
     @Override
     public SoundType getSoundType(BlockState state, LevelReader world, BlockPos pos, Entity entity)
     {
-        return BlockSoundHandler.getBlockSound(state, world, pos, entity, this.getBlock());
+        return BlockSoundHandler.getBlockSound(state, this.getBlock());
     }
 }

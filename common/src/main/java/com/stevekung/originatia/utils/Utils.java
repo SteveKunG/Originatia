@@ -1,8 +1,5 @@
 package com.stevekung.originatia.utils;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
-
 import me.shedaniel.architectury.annotations.ExpectPlatform;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ServerData;
@@ -26,11 +23,6 @@ public class Utils
     {
         ServerData server = this.mc.getCurrentServer();
         return server != null && server.ip.contains("originrealms");
-    }
-
-    public Collection<String> filteredPlayers(Collection<String> collection)
-    {
-        return collection.stream().filter(s -> !s.startsWith(":")).collect(Collectors.toList());
     }
 
     @ExpectPlatform

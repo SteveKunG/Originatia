@@ -148,7 +148,7 @@ public class BlockSoundHandler
         return Utils.getSound(state, reader, pos, entity);
     }
 
-    public static SoundType getBlockSound(BlockState state, LevelReader world, BlockPos pos, Entity entity, Block block)
+    public static SoundType getBlockSound(BlockState state, Block block)
     {
         Collection<ISoundData> datas = BlockSoundHandler.DATA.get(state.getBlock());
 

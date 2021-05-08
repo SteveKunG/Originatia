@@ -5,11 +5,8 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.stevekung.originatia.block.data.TripWireBlockType;
 import net.minecraft.commands.arguments.blocks.BlockInput;
 import net.minecraft.commands.arguments.blocks.BlockStateArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BlockShapeHandler
@@ -23,7 +20,7 @@ public class BlockShapeHandler
     public static final VoxelShape AABB_TOXIC_MUSHROOM = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
     public static final VoxelShape AABB_TOXIC_MUSHROOM_CEILING = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
-    public static VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context, VoxelShape defaultShape)
+    public static VoxelShape getShape(BlockState state, VoxelShape defaultShape)
     {
         for (TripWireBlockType type : TripWireBlockType.values())
         {

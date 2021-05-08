@@ -26,7 +26,7 @@ public class MixinEntity
     @Redirect(method = "playStepSound", at = @At(value = "INVOKE", target = "net/minecraft/world/level/block/state/BlockState.getSoundType()Lnet/minecraft/world/level/block/SoundType;", ordinal = 1))
     private SoundType setBlockSound(BlockState state, BlockPos blockPos, BlockState blockState)
     {
-        return BlockSoundHandler.getBlockSound(blockState, this.that.level, blockPos, this.that, blockState.getBlock());
+        return BlockSoundHandler.getBlockSound(blockState, blockState.getBlock());
     }
 
     @Redirect(method = "playStepSound", at = @At(value = "INVOKE", target = "net/minecraft/world/level/block/state/BlockState.is(Lnet/minecraft/world/level/block/Block;)Z"))

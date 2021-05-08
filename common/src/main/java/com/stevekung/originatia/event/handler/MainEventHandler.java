@@ -7,7 +7,6 @@ import org.lwjgl.glfw.GLFW;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.stevekung.originatia.gui.screen.widget.ItemButton;
-import com.stevekung.originatia.mixin.AccessorScreen;
 import com.stevekung.originatia.utils.ItemUtilsOR;
 import com.stevekung.originatia.utils.Utils;
 import com.stevekung.stevekungslib.utils.GameProfileUtils;
@@ -15,6 +14,7 @@ import com.stevekung.stevekungslib.utils.TextComponentUtils;
 import com.stevekung.stevekungslib.utils.client.ClientUtils;
 import me.shedaniel.architectury.event.events.GuiEvent;
 import me.shedaniel.architectury.event.events.client.ClientTickEvent;
+import me.shedaniel.architectury.hooks.ScreenHooks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -77,7 +77,7 @@ public class MainEventHandler
             return;
         }
 
-        for (ItemButton button : ((AccessorScreen)screen).getButtons().stream().filter(button -> button instanceof ItemButton).map(button -> (ItemButton)button).collect(Collectors.toList()))
+        for (ItemButton button : ScreenHooks.getButtons(screen).stream().filter(ItemButton.class::isInstance).map(ItemButton.class::cast).collect(Collectors.toList()))
         {
             boolean hover = mouseX >= button.x && mouseY >= button.y && mouseX < button.x + button.getWidth() && mouseY < button.y + button.getHeight();
 
@@ -92,6 +92,6 @@ public class MainEventHandler
 
     private void addButtonsToInventory(InventoryScreen screen, int width, int height, boolean recipeBook)
     {
-        ((AccessorScreen)screen).invokeAddButton(itemButton = new ItemButton(width + (recipeBook ? 120 : 44), height + 84, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> Minecraft.getInstance().player.chat("/auctionhouse")));
+        ScreenHooks.addButton(screen, itemButton = new ItemButton(width + (recipeBook ? 120 : 44), height + 84, ItemUtilsOR.makeSimpleItem(4017, TextComponentUtils.component("Auction House")), button -> Minecraft.getInstance().player.chat("/auctionhouse")));
     }
 }

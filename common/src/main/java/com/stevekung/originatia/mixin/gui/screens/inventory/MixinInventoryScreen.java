@@ -25,7 +25,7 @@ public abstract class MixinInventoryScreen extends EffectRenderingInventoryScree
         super(null, null, null);
     }
 
-    @Inject(method = "*", at = @At(value = "INVOKE", target = "net/minecraft/client/gui/components/ImageButton.setPosition(II)V"), expect = 1, require = 1)
+    @Inject(method = "*", at = @At(value = "INVOKE", target = "net/minecraft/client/gui/components/ImageButton.setPosition(II)V"), require = 1)
     private void checkButtonPos(Button button, CallbackInfo info)
     {
         if (this.recipeBookComponent.isVisible())
