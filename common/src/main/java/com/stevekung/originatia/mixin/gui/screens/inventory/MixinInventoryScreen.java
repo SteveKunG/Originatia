@@ -20,7 +20,7 @@ public abstract class MixinInventoryScreen extends EffectRenderingInventoryScree
     @Final
     private RecipeBookComponent recipeBookComponent;
 
-    private MixinInventoryScreen()
+    MixinInventoryScreen()
     {
         super(null, null, null);
     }
@@ -28,13 +28,16 @@ public abstract class MixinInventoryScreen extends EffectRenderingInventoryScree
     @Inject(method = "*", at = @At(value = "INVOKE", target = "net/minecraft/client/gui/components/ImageButton.setPosition(II)V"), require = 1)
     private void checkButtonPos(Button button, CallbackInfo info)
     {
-        if (this.recipeBookComponent.isVisible())
+        if (MainEventHandler.itemButton != null)
         {
-            MainEventHandler.itemButton.x = this.width / 2 + 120;
-        }
-        else
-        {
-            MainEventHandler.itemButton.x = this.width / 2 + 44;
+            if (this.recipeBookComponent.isVisible())
+            {
+                MainEventHandler.itemButton.x = this.width / 2 + 120;
+            }
+            else
+            {
+                MainEventHandler.itemButton.x = this.width / 2 + 44;
+            }
         }
     }
 }
