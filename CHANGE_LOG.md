@@ -2,4 +2,4 @@
 
 ### Please report if you found the issues!
 
-* * Now using Architectury API
+* * Fixed crash on singleplayer
