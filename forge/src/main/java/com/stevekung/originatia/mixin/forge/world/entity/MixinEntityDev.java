@@ -1,4 +1,4 @@
-package com.stevekung.originatia.mixin.world.entity;
+package com.stevekung.originatia.mixin.forge.world.entity;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,9 +14,9 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 
 @Mixin(Entity.class)
-public class MixinEntity
+public class MixinEntityDev
 {
-    @Redirect(method = "playStepSound", at = @At(value = "INVOKE", remap = false, target = "net/minecraft/block/BlockState.getSoundType(Lnet/minecraft/world/IWorldReader;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/Entity;)Lnet/minecraft/block/SoundType;", ordinal = 0))
+    @Redirect(method = "playStepSound", at = @At(value = "INVOKE", remap = false, target = "net/minecraft/world/level/block/state/BlockState.getSoundType(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/level/block/SoundType;", ordinal = 0))
     private SoundType playStepSound(BlockState state, LevelReader reader, BlockPos pos, Entity entity)
     {
         return BlockSoundHandler.getStepSound(state, reader, pos, entity);

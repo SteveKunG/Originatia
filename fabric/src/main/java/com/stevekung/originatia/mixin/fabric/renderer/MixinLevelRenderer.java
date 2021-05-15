@@ -1,4 +1,4 @@
-package com.stevekung.originatia.mixin.renderer;
+package com.stevekung.originatia.mixin.fabric.renderer;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

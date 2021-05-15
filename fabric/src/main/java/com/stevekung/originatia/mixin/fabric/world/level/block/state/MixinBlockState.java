@@ -1,4 +1,4 @@
-package com.stevekung.originatia.mixin.world.level.block.state;
+package com.stevekung.originatia.mixin.fabric.world.level.block.state;
 
 import org.spongepowered.asm.mixin.Mixin;
 import com.stevekung.originatia.utils.IBlockSoundType;

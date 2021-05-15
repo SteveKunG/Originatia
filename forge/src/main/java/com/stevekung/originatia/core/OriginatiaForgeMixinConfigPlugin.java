@@ -24,11 +24,11 @@ public class OriginatiaForgeMixinConfigPlugin implements IMixinConfigPlugin
     {
         if (FMLLoader.isProduction())
         {
-            return !mixinClassName.equals("com.stevekung.originatia.mixin.world.entity.MixinEntityDev");
+            return !mixinClassName.equals("com.stevekung.originatia.mixin.forge.world.entity.MixinEntityDev");
         }
         else
         {
-            return !mixinClassName.equals("com.stevekung.originatia.mixin.world.entity.MixinEntity");
+            return !mixinClassName.equals("com.stevekung.originatia.mixin.forge.world.entity.MixinEntity");
         }
     }
 

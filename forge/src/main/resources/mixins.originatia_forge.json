@@ -2,7 +2,7 @@
     "required": true,
     "minVersion": "0.8.2",
     "compatibilityLevel": "JAVA_8",
-    "package": "com.stevekung.originatia.mixin",
+    "package": "com.stevekung.originatia.mixin.forge",
     "plugin": "com.stevekung.originatia.core.OriginatiaForgeMixinConfigPlugin",
     "client": [
         "world.entity.MixinEntity",

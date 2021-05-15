@@ -1,4 +1,4 @@
-package com.stevekung.originatia.mixin.multiplayer;
+package com.stevekung.originatia.mixin.fabric.multiplayer;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

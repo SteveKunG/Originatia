@@ -1,20 +1,20 @@
-package com.stevekung.originatia.mixin.world.level.block;
+package com.stevekung.originatia.mixin.forge.world.level.block;
 
 import org.spongepowered.asm.mixin.Mixin;
 import com.stevekung.originatia.block.BlockSoundHandler;
-import com.stevekung.originatia.utils.IBlockSoundType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.extensions.IForgeBlock;
 
 @Mixin(Block.class)
-public abstract class MixinBlock implements IBlockSoundType
+public abstract class MixinBlock implements IForgeBlock
 {
     @Override
-    public SoundType getBlockSoundType(BlockState state, LevelReader reader, BlockPos pos, Entity entity)
+    public SoundType getSoundType(BlockState state, LevelReader world, BlockPos pos, Entity entity)
     {
         return BlockSoundHandler.getBlockSound(state, this.getBlock());
     }
