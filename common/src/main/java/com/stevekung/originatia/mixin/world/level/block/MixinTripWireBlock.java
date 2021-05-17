@@ -35,7 +35,7 @@ public class MixinTripWireBlock
     {
         if (Utils.INSTANCE.isOriginRealms())
         {
-            info.setReturnValue(((TripWireBlock)(Object)this).defaultBlockState());
+            info.setReturnValue(((TripWireBlock) (Object) this).defaultBlockState());
         }
     }
 

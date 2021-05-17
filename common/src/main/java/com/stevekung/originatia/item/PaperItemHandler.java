@@ -67,7 +67,7 @@ public class PaperItemHandler
 
                     if (playerentity instanceof ServerPlayer)
                     {
-                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)playerentity, blockpos, itemstack);
+                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) playerentity, blockpos, itemstack);
                     }
                 }
 

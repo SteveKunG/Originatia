@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 @Mixin(Entity.class)
 public class MixinEntity
 {
-    private final Entity that = (Entity)(Object)this;
+    private final Entity that = (Entity) (Object) this;
 
     @Redirect(method = "playStepSound", at = @At(value = "INVOKE", target = "net/minecraft/world/level/block/state/BlockState.getSoundType()Lnet/minecraft/world/level/block/SoundType;", ordinal = 0))
     private SoundType setStepSound(BlockState state)

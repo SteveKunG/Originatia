@@ -21,6 +21,6 @@ public class MixinLevelRenderer
     @Redirect(method = "levelEvent", at = @At(value = "INVOKE", target = "net/minecraft/world/level/block/state/BlockState.getSoundType()Lnet/minecraft/world/level/block/SoundType;"))
     private SoundType getBlockSoundType(BlockState state, Player player, int i, BlockPos blockPos, int j)
     {
-        return ((IBlockStateSoundType)state).getBlockSoundType(this.level, blockPos, null);
+        return ((IBlockStateSoundType) state).getBlockSoundType(this.level, blockPos, null);
     }
 }

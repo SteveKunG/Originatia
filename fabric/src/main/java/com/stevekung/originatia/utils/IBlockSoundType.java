@@ -11,7 +11,7 @@ public interface IBlockSoundType
 {
     default Block getBlock()
     {
-        return (Block)this;
+        return (Block) this;
     }
 
     default SoundType getBlockSoundType(BlockState state, LevelReader reader, BlockPos pos, Entity entity)

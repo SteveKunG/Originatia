@@ -44,7 +44,7 @@ public class MainEventHandler
             {
                 if (mc.hitResult instanceof BlockHitResult)
                 {
-                    BlockHitResult result = (BlockHitResult)mc.hitResult;
+                    BlockHitResult result = (BlockHitResult) mc.hitResult;
                     BlockState state = mc.level.getBlockState(result.getBlockPos());
                     StringBuilder stringbuilder = new StringBuilder(BlockStateParser.serialize(state));
                     System.out.println(stringbuilder);
@@ -63,7 +63,7 @@ public class MainEventHandler
         {
             if (screen instanceof InventoryScreen)
             {
-                InventoryScreen invScreen = (InventoryScreen)screen;
+                InventoryScreen invScreen = (InventoryScreen) screen;
                 this.addButtonsToInventory(invScreen, width, height, invScreen.getRecipeBookComponent().isVisible());
             }
         }

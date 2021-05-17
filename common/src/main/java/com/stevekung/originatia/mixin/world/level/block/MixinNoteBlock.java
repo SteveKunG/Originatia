@@ -28,7 +28,7 @@ public class MixinNoteBlock
     {
         if (Utils.INSTANCE.isOriginRealms())
         {
-            info.setReturnValue(((NoteBlock)(Object)this).defaultBlockState());
+            info.setReturnValue(((NoteBlock) (Object) this).defaultBlockState());
         }
     }
 

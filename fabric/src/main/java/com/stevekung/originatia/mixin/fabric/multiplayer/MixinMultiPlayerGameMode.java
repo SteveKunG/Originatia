@@ -23,6 +23,6 @@ public class MixinMultiPlayerGameMode
     @Redirect(method = "continueDestroyBlock", at = @At(value = "INVOKE", target = "net/minecraft/world/level/block/state/BlockState.getSoundType()Lnet/minecraft/world/level/block/SoundType;"))
     public SoundType getBlockSoundGroup(BlockState state, BlockPos blockPos, Direction direction)
     {
-        return ((IBlockSoundType)state.getBlock()).getBlockSoundType(state, this.minecraft.level, blockPos, this.minecraft.player);
+        return ((IBlockSoundType) state.getBlock()).getBlockSoundType(state, this.minecraft.level, blockPos, this.minecraft.player);
     }
 }

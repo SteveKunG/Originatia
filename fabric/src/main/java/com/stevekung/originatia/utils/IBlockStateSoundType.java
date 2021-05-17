@@ -10,11 +10,11 @@ public interface IBlockStateSoundType
 {
     default BlockState getBlockState()
     {
-        return (BlockState)this;
+        return (BlockState) this;
     }
 
     default SoundType getBlockSoundType(LevelReader reader, BlockPos pos, Entity entity)
     {
-        return ((IBlockSoundType)this.getBlockState().getBlock()).getBlockSoundType(this.getBlockState(), reader, pos, entity);
+        return ((IBlockSoundType) this.getBlockState().getBlock()).getBlockSoundType(this.getBlockState(), reader, pos, entity);
     }
 }

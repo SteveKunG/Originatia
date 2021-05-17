@@ -11,6 +11,6 @@ public class UtilsImpl
 {
     public static SoundType getSound(BlockState state, LevelReader reader, BlockPos pos, Entity entity)
     {
-        return ((IBlockStateSoundType)state).getBlockSoundType(reader, pos, entity);
+        return ((IBlockStateSoundType) state).getBlockSoundType(reader, pos, entity);
     }
 }

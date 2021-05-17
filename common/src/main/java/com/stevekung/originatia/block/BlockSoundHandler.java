@@ -126,7 +126,7 @@ public class BlockSoundHandler
                 {
                     if (data instanceof TripWireBlockSoundType)
                     {
-                        TripWireBlockSoundType tData = (TripWireBlockSoundType)data;
+                        TripWireBlockSoundType tData = (TripWireBlockSoundType) data;
 
                         try
                         {
@@ -158,7 +158,7 @@ public class BlockSoundHandler
             {
                 if (data instanceof NoteBlockSoundType)
                 {
-                    NoteBlockSoundType nData = (NoteBlockSoundType)data;
+                    NoteBlockSoundType nData = (NoteBlockSoundType) data;
 
                     if (state.getValue(NoteBlock.INSTRUMENT) == nData.getBlockType().getInstrument() && Arrays.stream(nData.getBlockType().getNote()).anyMatch(note -> state.getValue(NoteBlock.NOTE) == note))
                     {
@@ -167,12 +167,12 @@ public class BlockSoundHandler
                 }
                 else if (data instanceof SimpleBlockSoundType)
                 {
-                    SimpleBlockSoundType sData = (SimpleBlockSoundType)data;
+                    SimpleBlockSoundType sData = (SimpleBlockSoundType) data;
                     return sData.getType();
                 }
                 else if (data instanceof TripWireBlockSoundType)
                 {
-                    TripWireBlockSoundType tData = (TripWireBlockSoundType)data;
+                    TripWireBlockSoundType tData = (TripWireBlockSoundType) data;
 
                     try
                     {
